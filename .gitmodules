@@ -1,0 +1,3 @@
+[submodule "src/vendor/doctrine"]
+	path = src/vendor/doctrine
+	url = git://github.com/doctrine/doctrine1.git
