@@ -1,0 +1,16 @@
+#Julekort for EBST
+
+Christmas campaign for EBST
+
+###Build project
+
+    [Sites]$ git clone git@github.com:verk/ebst-julekort.git
+    [Sites]$ cd ebst-julekort
+    [Sites/ebst-julekort]$ git submodules init
+    [Sites/ebst-julekort]$ git submodules update
+    [Sites/ebst-julekort]$ ./scripts/build
+
+###Database
+
+    [Sites/ebst-julekort]$ zf generate-models-from-yaml doctrine
+    [Sites/ebst-julekort]$ zf build-project doctrine --reload
