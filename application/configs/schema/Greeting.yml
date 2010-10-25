@@ -1,18 +1,31 @@
 ---
-Ebst_Default_Greeting:
-  Columns:
-    id: ~
-    from: string(255)
-    from_email: string(255)
-    greeting: clob
-  Relations:
-    Ebst_Default_Greeting_Recipient:
+Default_Model_Greeting:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    from_name:
+      type: string(255)
+    from_email:
+      type: string(255)
+    greeting:
+      type: clob
+  relations:
+    Recipient:
+      class: Default_Model_GreetingRecipient
       local: id
       foreign: greeting_id
 
-Ebst_Default_Greeting_Recipient:
-  Columns:
-    id: ~
-    greeting_id: integer
-    to_name: string(255)
-    to_email: string(255)
+Default_Model_GreetingRecipient:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    greeting_id:
+      type: integer
+    to_name:
+      type: string(255)
+    to_email:
+      type: string(255)

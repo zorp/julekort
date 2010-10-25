@@ -1,3 +1,6 @@
 [submodule "src/vendor/doctrine"]
 	path = src/vendor/doctrine
 	url = http://github.com/doctrine/doctrine1.git
+[submodule "src/vendor/zf-doctrine"]
+	path = src/vendor/zf-doctrine
+	url = http://github.com/beberlei/zf-doctrine.git

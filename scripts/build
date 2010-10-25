@@ -2,32 +2,52 @@
 <?php
 error_reporting(E_ALL);
 
+
 class Setup {
 
     const LIBRARY = 'library';
     const DOCTRINE_DIR = 'src/vendor/doctrine/lib';
+    const ZFDOCTRINE_DIR = 'src/vendor/zf-doctrine/library';
 
     public function __construct()
     {
         $this->_doctrineSetup();
+        $this->_zfDoctrineSetup()
     }
 
     protected function _doctrineSetup()
     {
         try {
             if(!is_dir(self::DOCTRINE_DIR)) {
-                throw new Exception('Couldnt find Doctrine in src/vendor. Make sure you\'ve run git submodules init && git submodules update');
+                throw new Exception('Could not find Doctrine in src/vendor.');
             }
 
-            $output = shell_exec('cp -R -a ' . self::DOCTRINE_DIR . '/*' . ' library 2>&1');
-            print $output;
-
+            $copy = shell_exec('cp -R -a ' . self::DOCTRINE_DIR . '/*' . ' library 2>&1');
+            if(!empty($copy)) {
+                throw new Exception('Could not copy the Doctrine directory');
+            }
         } catch(Exception $e) {
             print "Caught exception: \n" . $e->getMessage() . "\n";
         }
+    }
 
+    protected function _zfDoctrineSetup()
+    {
+        try {
+            if(!is_dir(self::ZFDOCTRINE_DIR)) {
+                throw new Exception('Could not find zf-doctrine in src/vendor.');
+            }
+
+            $copy = shell_exec('cp -R -a ' . self::ZFDOCTRINE_DIR . '/*' . ' library 2>&1');
+            if(!empty($copy)) {
+                throw new Exception('Could not copy the Doctrine directory');
+            }
+        } catch(Exception $e) {
+            print "Caught exception: \n" . $e->getMessage() . "\n";
+        }
     }
 
 }
+
 
 $s = new Setup();
