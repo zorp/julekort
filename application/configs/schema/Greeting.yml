@@ -1,0 +1,18 @@
+---
+Ebst_Default_Greeting:
+  Columns:
+    id: ~
+    from: string(255)
+    from_email: string(255)
+    greeting: clob
+  Relations:
+    Ebst_Default_Greeting_Recipient:
+      local: id
+      foreign: greeting_id
+
+Ebst_Default_Greeting_Recipient:
+  Columns:
+    id: ~
+    greeting_id: integer
+    to_name: string(255)
+    to_email: string(255)
