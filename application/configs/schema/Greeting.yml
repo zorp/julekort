@@ -5,6 +5,8 @@ Default_Model_Greeting:
       type: integer
       primary: true
       autoincrement: true
+    hash:
+      type: integer
     from_name:
       type: string(255)
     from_email:
@@ -16,6 +18,7 @@ Default_Model_Greeting:
       class: Default_Model_GreetingRecipient
       local: id
       foreign: greeting_id
+  actAs: [Timestampable]
 
 Default_Model_GreetingRecipient:
   columns:

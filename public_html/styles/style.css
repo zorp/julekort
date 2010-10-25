@@ -74,7 +74,7 @@ input, select { overflow: visible; vertical-align:middle; }
    * we normalize monospace styles ourselves
    * table font-size is reset in the HTML5 reset above so there is no need to repeat
 */
-body { font:13px/1.231 sans-serif; *font-size:small; } /* hack retained to preserve specificity */
+body { font:14px/1.231 sans-serif; *font-size:small; } /* hack retained to preserve specificity */
 
 select, input, textarea, button { font:99% sans-serif; }
 
@@ -91,9 +91,9 @@ pre, code, kbd, samp { font-family: monospace, sans-serif; }
 
 body, select, input, textarea {
   /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */
-  color: #868686;
+  color: #444;
   /* set your base font here, to apply evenly */
-  font-family: Georgia, serif;
+  font-family: Arial, Verdana, sans-serif;
 }
 
 /* always force a scrollbar in non-IE */
@@ -107,12 +107,12 @@ h1,h2,h3,h4,h5,h6 { font-weight: bold; }
 a:hover, a:active { outline: none; }
 
 a, a:active, a:visited {
-    color: #33beff;
+    color: #333;
     text-decoration: none;
 }
 a:hover {
-    color: #33beff;
-    border-bottom: 1px dotted #33beff;
+    color: #333;
+    text-decoraiton:underline;
 }
 
 
@@ -218,6 +218,42 @@ button {  width: auto; overflow: visible; }
 /* Primary styles
    Author: Christian Kirkegaard
  */
+body {
+    background-color: #625E53;
+}
+
+header {
+    background-image: url('/images/header.jpg');
+    height: 111px;
+}
+    header .logo {
+        height: 73px;
+    }
+        header .logo a {
+            display:block;
+            margin-top: 10px;
+        }
+
+    header .menu {
+        margin-top: 8px;
+        font-size: 12px;
+    }
+
+#container {
+    background-image: url('/images/container-middle.gif');
+    background-repeat: repeat-y;
+}
+    #container .content {
+        background-image: url('/images/container-top.gif');
+        background-repeat: no-repeat;
+        background-position: top center;
+        padding: 20px 0px;
+        overflow:hidden;
+    }
+footer {
+    background-image: url('/images/footer.gif');
+    height: 37px;
+}
 
 
 

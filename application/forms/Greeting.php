@@ -1,6 +1,6 @@
 <?php
 
-class Ebst_Form_Greeting extends Zend_Form
+class Default_Form_Greeting extends Zend_Form
 {
 
     public function init()
@@ -13,20 +13,25 @@ class Ebst_Form_Greeting extends Zend_Form
             'label' => 'Fra:',
             'validators' => array('NotEmpty')
         ));
-        $from_name = new Zend_Form_Element_Text('from_email', array(
+        $from_email = new Zend_Form_Element_Text('from_email', array(
             'label' => 'Fra email:',
             'validators' => array('EmailAddress')
         ));
 
 
-        $from_name = new Zend_Form_Element_Text('to_name', array(
+        /**
+         * @todo it should be possible to extend this with multiple recipients
+         * a subform might be the way to go by this
+         */
+        $to_name = new Zend_Form_Element_Text('to_name', array(
             'label' => 'Til:',
             'validators' => array('NotEmpty')
         ));
-        $from_name = new Zend_Form_Element_Text('to_email', array(
+        $to_email = new Zend_Form_Element_Text('to_email', array(
             'label' => 'Fra:',
             'validators' => array('EmailAddress')
         ));
+
 
         $greeting = new Zend_Form_Element_Textarea('greeting', array(
             'label' => 'Tekst:',
@@ -34,11 +39,11 @@ class Ebst_Form_Greeting extends Zend_Form
         ));
 
         $show_card = new Zend_Form_Element_Submit('show_card', array(
-            'label' => 'Vis kort:',
+            'label' => 'Vis kort',
             'ignore' => true,
         ));
-        $show_card = new Zend_Form_Element_Submit('send_card', array(
-            'label' => 'Send kort:',
+        $send_card = new Zend_Form_Element_Submit('send_card', array(
+            'label' => 'Send kort',
             'ignore' => true,
         ));
 

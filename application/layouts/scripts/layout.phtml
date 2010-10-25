@@ -27,20 +27,28 @@
 </head>
 <body class="step_<?php print $this->step; ?>">
 
-    <div id="container" class="container_12">
-        <header class="grid_12">
-            <h1>EBST</h1>
-        </header>
-
-        <div id="main">
-            <?php echo $this->layout()->content; ?>
-            <div class="clear"></div>
+    <header class="container_8">
+        <div class="logo grid_8">
+            <a href="/"><img src="/images/ebst_logo.gif"></a>
         </div>
+        <div class="grid_2 menu">
+            <p><a href="http://ebst.dk">EBST</a></p>
+        </div>
+        <div class="grid_6 menu">
+            <p>Digital julehilsen</p>
+        </div>
+    </header>
 
-        <footer>
-            <p>footer note...
-        </footer>
+    <div id="container" class="container_8">
+        <div class="content">
+            <?php echo $this->layout()->content; ?>
+        </div>
+        <div class="clear"></div>
     </div>
+
+    <footer class="container_8">
+        &nbsp;
+    </footer>
 
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
