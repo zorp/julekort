@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+<?php
+error_reporting(E_ALL);
+
+class Setup {
+
+    const LIBRARY = 'library';
+    const DOCTRINE_DIR = 'src/vendor/doctrine/lib';
+
+    public function __construct()
+    {
+        $this->_doctrineSetup();
+    }
+
+    protected function _doctrineSetup()
+    {
+        try {
+            if(!is_dir(self::DOCTRINE_DIR)) {
+                throw new Exception('Couldnt find Doctrine in src/vendor. Make sure you\'ve run git submodules init && git submodules update');
+            }
+
+            $output = shell_exec('cp -R -a ' . self::DOCTRINE_DIR . '/*' . ' library 2>&1');
+            print $output;
+
+        } catch(Exception $e) {
+            print "Caught exception: \n" . $e->getMessage() . "\n";
+        }
+
+    }
+
+}
+
+$s = new Setup();
