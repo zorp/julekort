@@ -31,13 +31,13 @@ class Default_Form_Greeting extends Zend_Form
          * @todo it should be possible to extend this with multiple recipients
          * a subform might be the way to go by this
          */
-        $to_name = new Zend_Form_Element_Text('to_name', array(
+        $to_name = new Zend_Form_Element_Text('to_name_0', array(
             'label'      => 'Til:',
             'required'   => true,
             'order'      => 3,
             'belongsTo'  => 'Recipient[0]',
         ));
-        $to_email = new Zend_Form_Element_Text('to_email', array(
+        $to_email = new Zend_Form_Element_Text('to_email_0', array(
             'label'      => 'Til email:',
             'required'   => true,
             'order'      => 4,
@@ -91,6 +91,25 @@ class Default_Form_Greeting extends Zend_Form
         ));
     }
 
+    public function getRecipients()
+    {
+        $recipients = array();
+
+        foreach($this->getElements() as $key => $elm) {
+            preg_match('/(Recipient\w*)/', $elm->getBelongsTo(), $match);
+            if(count($match) > 0) {
+                preg_match('/(to_\w*)_(\d*)/', $elm->getName(), $name);
+
+                $gid = (int) $name[2];
+                $key = $name[1];
+
+                $recipients[$gid][$key] = $elm->getValue();
+            }
+        }
+
+        return $recipients;
+    }
+
     public function validateRecipient(array $fields)
     {
         if(count($fields) === 1) {
@@ -119,8 +138,6 @@ class Default_Form_Greeting extends Zend_Form
         }
         return true;
     }
-
-
 
     public function addRecipient($name, $value, $type, $belongsTo, $order)
     {

@@ -45,8 +45,15 @@ class IndexController extends Zend_Controller_Action
             return;
         }
 
+        $data = array(
+            'from_name'  => $this->_getParam('from_name'),
+            'from_email' => $this->_getParam('from_email'),
+            'greeting'   => $this->_getParam('greeting'),
+            'Recipient'  => $form->getRecipients(),
+        );
+
         $model = new Default_Model_Greeting();
-        $model->fromArray($this->getRequest()->getPost());
+        $model->fromArray($data);
         $model->save();
 
         $this->_redirector->gotoUrl('/send/' . $model->hash);
@@ -94,7 +101,9 @@ class IndexController extends Zend_Controller_Action
         /**
          * send email here...
          */
-        $this->_redirector->gotoUrl('/view/' . $this->_getParam('hash', null));
+        var_dump($this->_getParam('hash', null));
+        die('Sending...');
+        //$this->_redirector->gotoUrl('/view/' . $this->_getParam('hash', null));
     }
 
     public function notfoundAction()
