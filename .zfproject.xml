@@ -23,6 +23,7 @@
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Greeting"/>
+        <formFile formName="View"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory/>

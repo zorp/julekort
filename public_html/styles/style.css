@@ -83,7 +83,6 @@ select, input, textarea, button { font:99% sans-serif; }
  */
 pre, code, kbd, samp { font-family: monospace, sans-serif; }
 
-
 /*
  * minimal base styles
  */
@@ -127,15 +126,7 @@ td, td img { vertical-align: top; }
 sub { vertical-align: sub; font-size: smaller; }
 sup { vertical-align: super; font-size: smaller; }
 
-pre {
-  padding: 15px;
 
-  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
-  white-space: pre; /* CSS2 */
-  white-space: pre-wrap; /* CSS 2.1 */
-  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
-  word-wrap: break-word; /* IE */
-}
 
 textarea { overflow: auto; } /* thnx ivannikolic! www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
 
@@ -222,6 +213,30 @@ body {
     background-color: #625E53;
 }
 
+h1 {
+    font-size: 24px;
+}
+h2 {
+    font-size: 18px;
+}
+h3 {
+    font-size: 16px;
+}
+h4 {
+    font-size: 14px;
+}
+p {
+    margin-bottom: 10px;
+}
+ul.errors {
+    list-style:none;
+}
+    ul.errors li {
+        color: #ff0000;
+    }
+
+
+
 header {
     background-image: url('/images/header.jpg');
     height: 111px;
@@ -250,6 +265,38 @@ header {
         padding: 20px 0px;
         overflow:hidden;
     }
+
+
+/**
+ * Forms
+ */
+form dt,
+form dd {
+    margin-bottom: 10px;
+}
+form dt {
+    float:left;
+    width: 80px;
+}
+form label {
+    display:block;
+    padding: 4px;
+}
+form textarea,
+form input {
+    border: 1px solid #A1A29C;
+    font-size: 14px;
+    padding: 4px;
+    width: 280px;
+}
+form input.submit {
+    border: 1px solid #A1A29C;
+    background-color: #eee;
+    width: auto;
+}
+
+
+
 footer {
     background-image: url('/images/footer.gif');
     height: 37px;

@@ -4,6 +4,7 @@ class IndexController extends Zend_Controller_Action
 {
 
     protected $_form = null;
+    protected $_redirector = null;
 
     public function getForm()
     {
@@ -15,43 +16,65 @@ class IndexController extends Zend_Controller_Action
 
     public function init()
     {
-        /* Initialize action controller here */
+        $ajaxContext = $this->_helper->getHelper('AjaxContext');
+        $ajaxContext->addActionContext('addrecipient', 'html')
+                    ->initContext();
+
+        $this->_redirector = $this->getHelper('Redirector');
     }
 
     public function indexAction()
     {
-        // action body
+        $form = new Default_Form_View();
+        $this->view->form = $form;
     }
 
     public function newAction()
     {
-        // now that we are sure lets add the name to our hidden form element
         $form = $this->getForm();
 
-        // if everything is good, lets go and save the record
-        if($this->getRequest()->isPost() && $form->isValid($this->_getAllParams())) {
-            $data  = $form->getValues();
-
-            $model = new Default_Model_Entry();
-            $model->fromArray(array(
-                'from_name'  => $data['from_name'],
-                'from_email' => $data['from_email'],
-                'greeting'   => $data['greeting'],
-                'recipients' => array() // @todo work in the multiple recipients here
-            ));
-            $model->save();
-
-            // all good, now lets share this bad boy
-            $this->_redirector->gotoUrl('/show/' . $model->hash);
+        if(!$this->getRequest()->isPost()) {
+            $this->view->form = $form;
+            return;
         }
 
-        $slicedName = explode(' ', $this->_getParam('name'));
+        $val = $form->validateRecipient($this->_getParam('Recipient'));
+
+        if(!$form->isValid($this->_getAllParams())) {
+            $this->view->form = $form;
+            return;
+        }
+
+        $model = new Default_Model_Greeting();
+        $model->fromArray($this->getRequest()->getPost());
+        $model->save();
+
+        $this->_redirector->gotoUrl('/send/' . $model->hash);
+    }
+
+    public function addrecipientAction()
+    {
+        $gid = $this->_getParam('gid', null);
+
+        $to_name = new Zend_Form_Element_Text('to_name_' . $gid, array(
+            'label'      => 'Til:',
+            'required'   => true,
+            'belongsTo'  => 'Recipient[' . $gid . ']',
+        ));
+        $to_email = new Zend_Form_Element_Text('to_email_' . $gid, array(
+            'label'      => 'Til email:',
+            'required'   => true,
+            'belongsTo'  => 'Recipient[' . $gid . ']',
+            'validators' => array('EmailAddress')
+        ));
+
+        $elements = $to_name->__toString() . $to_email->__toString();
         $this->view->assign(array(
-            'form'      => $form,
+            'recipient' => $elements
         ));
     }
 
-    public function showAction()
+    public function viewAction()
     {
         $greeting = Doctrine_Core::getTable('Default_Model_Greeting')
             ->findOneByHash($this->_getParam('hash', 0));
@@ -61,28 +84,35 @@ class IndexController extends Zend_Controller_Action
         }
 
         $this->view->assign(array(
-            'hash'     => $greeting->hash,
+            'hash' => $greeting->hash,
         ));
 
     }
 
     public function sendAction()
     {
-        // action body
+        /**
+         * send email here...
+         */
+        $this->_redirector->gotoUrl('/view/' . $this->_getParam('hash', null));
     }
 
     public function notfoundAction()
-    {}
+    {
+        $this->getResponse()->setHttpResponseCode(404);
+    }
 
     public function __call($action, $args)
     {
         $hash = str_replace('Action', '', $action);
         $lookup = Doctrine_Core::getTable('Default_Model_Greeting')
             ->findOneByHash($hash);
+
         if($lookup === false) {
             $this->_redirector->gotoUrl('/notfound/');
         }
-        $this->_redirector->gotoUrl('/show/' . $hash);
+
+        $this->_redirector->gotoUrl('/view/' . $hash);
     }
 
 }

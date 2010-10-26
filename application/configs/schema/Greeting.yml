@@ -18,6 +18,7 @@ Default_Model_Greeting:
       class: Default_Model_GreetingRecipient
       local: id
       foreign: greeting_id
+      type: many
   actAs: [Timestampable]
 
 Default_Model_GreetingRecipient:
