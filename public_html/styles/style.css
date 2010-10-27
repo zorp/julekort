@@ -316,6 +316,7 @@ form label {
     padding: 4px;
 }
 form textarea,
+form button,
 form input {
     border: 1px solid #A1A29C;
     font-size: 14px;
@@ -328,6 +329,13 @@ form input.submit {
     border: 1px solid #A1A29C;
     background-color: #eee;
     width: auto;
+}
+form button {
+    float:left;
+    margin-right: 5px;
+}
+form div#buttons {
+    margin-left: 80px;
 }
 
 

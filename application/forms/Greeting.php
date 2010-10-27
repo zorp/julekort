@@ -8,6 +8,7 @@ class Default_Form_Greeting extends Zend_Form
         $this->setAction('/new/');
         $this->setMethod(Zend_Form::METHOD_POST);
         $this->setAttrib('id', 'greeting');
+        $this->setElementFilters(array('StringTrim'));
 
         $gid = new Zend_Form_Element_Hidden('gid', array(
             'value' => 1,
@@ -71,11 +72,20 @@ class Default_Form_Greeting extends Zend_Form
             'order'  => 92,
             'class'  => 'view-card',
         ));
+        $show_card->setDecorators(array(
+            'ViewHelper',
+            array('HtmlTag', array('tag' => 'div', 'openOnly' => true, 'id' => 'buttons'))
+        ));
+
         $send_card = new Zend_Form_Element_Submit('send_card', array(
             'label'  => 'Send kort',
             'ignore' => true,
             'order'  => 93,
             'class'  => 'submit',
+        ));
+        $send_card->setDecorators(array(
+            'ViewHelper',
+            array('HtmlTag', array('tag' => 'div', 'closeOnly' => true))
         ));
 
 
