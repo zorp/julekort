@@ -228,13 +228,19 @@ h4 {
 p {
     margin-bottom: 10px;
 }
-ul.errors {
+form ul.errors {
     list-style:none;
+    float:right;
+    width: 240px;
 }
-    ul.errors li {
+    form ul.errors li {
         color: #ff0000;
     }
 
+
+.flash-text {
+    display:none;
+}
 
 
 header {
@@ -273,7 +279,18 @@ header {
 form dt,
 form dd {
     margin-bottom: 10px;
+    overflow:hidden;
 }
+    form dd#add_recipient-element {
+        border-top: 1px dotted #aaa;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+    form dd#from_email-element {
+        border-bottom: 1px dotted #aaa;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
 form dt {
     float:left;
     width: 80px;
@@ -287,14 +304,15 @@ form input {
     border: 1px solid #A1A29C;
     font-size: 14px;
     padding: 4px;
-    width: 280px;
+    width: 230px;
 }
+form button,
 form input.submit {
+    color: #555;
     border: 1px solid #A1A29C;
     background-color: #eee;
     width: auto;
 }
-
 
 
 footer {

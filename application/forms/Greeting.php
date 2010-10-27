@@ -42,8 +42,9 @@ class Default_Form_Greeting extends Zend_Form
             'required'   => true,
             'order'      => 4,
             'belongsTo'  => 'Recipient[0]',
-            'validators' => array('EmailAddress')
+            'validators' => array('EmailAddress'),
         ));
+
         $add_recipient = new Zend_Form_Element_Button('add_recipient', array(
             'label'  => 'Tilføj modtager',
             'ignore' => true,
@@ -68,7 +69,7 @@ class Default_Form_Greeting extends Zend_Form
             'label'  => 'Vis kort',
             'ignore' => true,
             'order'  => 92,
-            'class'  => 'submit',
+            'class'  => 'view-card',
         ));
         $send_card = new Zend_Form_Element_Submit('send_card', array(
             'label'  => 'Send kort',

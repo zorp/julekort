@@ -4,6 +4,21 @@ ebst = {
         $('.add-recipient').bind('click', function() {
             ebst.addRecipient();
         });
+        $('.view-card').bind('click', function() {
+            $('.flash').flash({
+                swf: '/flash/ebst_julekort.swf',
+                height: 440,
+                width: 320,
+                flashvars: {
+                    greeting: $('.flash-text').html()
+                }
+            });
+        }).trigger('click');
+        $('textarea#greeting').autoGrow();
+        $('textarea#greeting').bind('keyup', function() {
+            var textarea = $(this).val();
+            $('.flash-text').html(textarea);
+        })
     },
 
     addRecipient: function() {
