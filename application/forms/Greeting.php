@@ -42,7 +42,7 @@ class Default_Form_Greeting extends Zend_Form
             'required'   => true,
             'order'      => 4,
             'belongsTo'  => 'Recipient[0]',
-            'validators' => array('EmailAddress'),
+            'class'      => 'recipient'
         ));
 
         $add_recipient = new Zend_Form_Element_Button('add_recipient', array(
@@ -96,15 +96,27 @@ class Default_Form_Greeting extends Zend_Form
     {
         $recipients = array();
 
-        foreach($this->getElements() as $key => $elm) {
-            preg_match('/(Recipient\w*)/', $elm->getBelongsTo(), $match);
-            if(count($match) > 0) {
-                preg_match('/(to_\w*)_(\d*)/', $elm->getName(), $name);
+        // Hack to allow multiple addresses in the first field separated by comma
+        $to_email = $this->getElement('to_email_0')->getValue();
+        if(strpos($to_email, ',')) {
+            $addresses = explode(',', $to_email);
+            foreach($addresses as $gid => $address) {
+                $recipients[$gid] = array(
+                    'to_email' => trim($address),
+                    'to_name'  => $this->getElement('to_name_0')->getValue()
+                );
+            }
+        } else {
+            foreach($this->getElements() as $key => $elm) {
+                preg_match('/(Recipient\w*)/', $elm->getBelongsTo(), $match);
+                if(count($match) > 0) {
+                    preg_match('/(to_\w*)_(\d*)/', $elm->getName(), $name);
 
-                $gid = (int) $name[2];
-                $key = $name[1];
+                    $gid = (int) $name[2];
+                    $key = $name[1];
 
-                $recipients[$gid][$key] = $elm->getValue();
+                    $recipients[$gid][$key] = $elm->getValue();
+                }
             }
         }
 

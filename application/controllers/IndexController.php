@@ -72,7 +72,8 @@ class IndexController extends Zend_Controller_Action
             'label'      => 'Til email:',
             'required'   => true,
             'belongsTo'  => 'Recipient[' . $gid . ']',
-            'validators' => array('EmailAddress')
+            'validators' => array('EmailAddress'),
+            'class'      => 'email',
         ));
 
         $elements = $to_name->__toString() . $to_email->__toString();
@@ -123,9 +124,9 @@ class IndexController extends Zend_Controller_Action
             // @todo move this to a view and render it that way
             $mail->setBodyHtml('<h2>Kære ' . $recipient->to_name . '</h2>
 <p>Du har fået en julehilsen fra Erhvervs- og Byggestyrelsen.</p>
-<p>For at se kortet, <a href="http://ebst.dev.verk.dk/view/' . $model->hash . '">klik her</a>.</p>
-<p>Virker linket ikke, så kopiér koden herunder, <a href="http://ebst.dev.verk.dk">klik her</a> og indsæt koden.<br />
-Kode: ' . $model->hash . '</p>
+<p>For at se kortet, <a href="http://' . $this->getRequest()->getServer('HTTP_HOST') . '/view/' . $model->hash . '">klik her</a>.</p>
+<p>Virker linket ikke, så kopiér koden herunder, <a href="http://' . $this->getRequest()->getServer('HTTP_HOST') . '">klik her</a> og indsæt koden.<br />
+Kode: <strong>' . $model->hash . '</strong></p>
 
 <p>Venlig hilsen<br />
 ' . $model->from_name . '</p>');
