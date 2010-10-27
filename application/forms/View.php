@@ -6,7 +6,7 @@ class Default_Form_View extends Zend_Form
     public function init()
     {
         $this->setAction('/view/');
-        $this->setMethod(Zend_Form::METHOD_POST);
+        $this->setMethod(Zend_Form::METHOD_GET);
         $this->setAttrib('id', 'view');
 
         $hash = new Zend_Form_Element_Text('hash', array(

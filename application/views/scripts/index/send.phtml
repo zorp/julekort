@@ -1,1 +1,25 @@
-<br /><br /><center>View script for controller <b>Index</b> and script/action name <b>send</b></center>
+<div class="grid_8">
+    <h1>Hurra</h1>
+    <p>Dit kort er nu sendt til,
+        <?php if(count($this->recipients) > 1) : ?>
+            <ul>
+                <?php foreach($this->recipients as $recipient) : ?>
+                    <li>
+                        <strong><?php print $recipient->to_name ?></strong> på <strong><?php print $recipient->to_email; ?></strong>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else : ?>
+            <strong><?php print $this->recipients[0]->to_name ?></strong> på <strong><?php print $this->recipients[0]->to_email; ?></strong>
+        <?php endif; ?>
+    </p>
+    <h2>Din hemmelige kode er:</h2>
+    <p>
+        <a class="view" href="<?php print $this->url(array(
+            'controller' => 'index',
+            'action' => 'view',
+            'hash' => $this->hash
+        ), 'view'); ?>"><?php print $this->hash; ?></a>
+    </p>
+    <p>For at se kortet kan du trykke på din hemmelige kode her oven over</p>
+</div>

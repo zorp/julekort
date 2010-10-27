@@ -215,12 +215,15 @@ body {
 
 h1 {
     font-size: 24px;
+    margin-bottom: 10px;
 }
 h2 {
     font-size: 18px;
+    margin-bottom: 10px;
 }
 h3 {
     font-size: 16px;
+    margin-bottom: 10px;
 }
 h4 {
     font-size: 14px;
@@ -241,6 +244,19 @@ form ul.errors {
 .flash-text {
     display:none;
 }
+
+.send .view {
+    display: block;
+    width: 150px;
+    border: 1px solid #555;
+    text-align:center;
+    padding: 6px;
+    font-size: 16px;
+    background-color: #F3F0E9;
+}
+    .send .view:hover {
+        background-color: #fff;
+    }
 
 
 header {

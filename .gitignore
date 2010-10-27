@@ -1,3 +1,4 @@
 .DS_Store
 library/*
 application/models/Base/*
+application/configs/application.ini

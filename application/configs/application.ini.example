@@ -45,7 +45,18 @@ resources.router.routes.send.defaults.hash = ""
 resources.router.routes.view.route = "view/:hash"
 resources.router.routes.view.defaults.controller = "index"
 resources.router.routes.view.defaults.action = "view"
-resources.router.routes.view.defaults.hash = ""
+; resources.router.routes.view.defaults.hash = ""
+
+
+; Mail
+mail.outbound.email     = "no-reply@ebst.dk"
+mail.outbound.from      = "Erhvervs- og Byggestyrelsen"
+mail.outbound.host      = "smtp.gmail.com"
+mail.outbound.auth      = "login"
+mail.outbound.username  = "username"
+mail.outbound.password  = "password"
+mail.outbound.ssl       = "SSL"
+mail.outbound.port      = 465
 
 
 [staging : production]

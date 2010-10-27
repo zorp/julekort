@@ -83,27 +83,61 @@ class IndexController extends Zend_Controller_Action
 
     public function viewAction()
     {
-        $greeting = Doctrine_Core::getTable('Default_Model_Greeting')
+        $model = Doctrine_Core::getTable('Default_Model_Greeting')
             ->findOneByHash($this->_getParam('hash', 0));
 
-        if($greeting === false) {
+        if($model === false) {
             $this->_redirector->gotoUrl('/notfound/');
         }
 
         $this->view->assign(array(
-            'hash' => $greeting->hash,
+            'hash'     => $model->hash,
+            'greeting' => $model->greeting,
         ));
 
     }
 
     public function sendAction()
     {
-        /**
-         * send email here...
-         */
-        var_dump($this->_getParam('hash', null));
-        die('Sending...');
-        //$this->_redirector->gotoUrl('/view/' . $this->_getParam('hash', null));
+        $model = Doctrine_Core::getTable('Default_Model_Greeting')
+            ->findOneByHash($this->_getParam('hash', 0));
+
+        // if we for some reason should not be able to find the message, redirect
+        if($model === false) {
+            $this->_redirector->gotoUrl('/notfound/');
+        }
+
+        $options = $this->getInvokeArg('bootstrap')->getOption('mail');
+        $tr = new Zend_Mail_Transport_Smtp(
+            $options['outbound']['host'],
+            $options['outbound'],
+        );
+
+        foreach($model->Recipient as $recipient) {
+            $mail = new Zend_Mail('utf-8');
+
+            $mail->addTo($recipient->to_email, $recipient->to_name);
+            $mail->setFrom($options['outbound']['email'], $options['outbound']['from']);
+            $mail->setSubject('Julekort fra Erhvervs- og Byggestyrelsen');
+
+            // @todo move this to a view and render it that way
+            $mail->setBodyHtml('<h2>Kære ' . $recipient->to_name . '</h2>
+<p>Du har fået en julehilsen fra Erhvervs- og Byggestyrelsen.</p>
+<p>For at se kortet, <a href="http://ebst.dev.verk.dk/view/' . $model->hash . '">klik her</a>.</p>
+<p>Virker linket ikke, så kopiér koden herunder, <a href="http://ebst.dev.verk.dk">klik her</a> og indsæt koden.<br />
+Kode: ' . $model->hash . '</p>
+
+<p>Venlig hilsen<br />
+' . $model->from_name . '</p>');
+
+            $mail->send($tr);
+        }
+
+        $this->view->assign(array(
+            'recipients' => $model->Recipient,
+            'hash' => $model->hash
+        ));
+
     }
 
     public function notfoundAction()
