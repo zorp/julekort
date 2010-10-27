@@ -110,7 +110,7 @@ class IndexController extends Zend_Controller_Action
         $options = $this->getInvokeArg('bootstrap')->getOption('mail');
         $tr = new Zend_Mail_Transport_Smtp(
             $options['outbound']['host'],
-            $options['outbound'],
+            $options['outbound']
         );
 
         foreach($model->Recipient as $recipient) {
