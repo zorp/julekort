@@ -48,6 +48,7 @@ class IndexController extends Zend_Controller_Action
         $data = array(
             'from_name'  => $this->_getParam('from_name'),
             'from_email' => $this->_getParam('from_email'),
+            'signature'  => $this->_getParam('signature'),
             'greeting'   => $this->_getParam('greeting'),
             'Recipient'  => $form->getRecipients(),
         );
@@ -92,8 +93,9 @@ class IndexController extends Zend_Controller_Action
         }
 
         $this->view->assign(array(
-            'hash'     => $model->hash,
-            'greeting' => $model->greeting,
+            'hash'      => $model->hash,
+            'signature' => $model->signature,
+            'greeting'  => $model->greeting,
         ));
 
     }

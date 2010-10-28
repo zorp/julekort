@@ -65,11 +65,17 @@ class Default_Form_Greeting extends Zend_Form
             'rows' => 5,
         ));
 
+        $signature = new Zend_Form_Element_Checkbox('signature', array(
+            'label'  => 'Underskrift',
+            'value'  => 'TRUE',
+            'order'  => 92,
+            'class'  => 'signature',
+        ));
 
         $show_card = new Zend_Form_Element_Button('show_card', array(
             'label'  => 'Vis kort',
             'ignore' => true,
-            'order'  => 92,
+            'order'  => 93,
             'class'  => 'view-card',
         ));
         $show_card->setDecorators(array(
@@ -80,7 +86,7 @@ class Default_Form_Greeting extends Zend_Form
         $send_card = new Zend_Form_Element_Submit('send_card', array(
             'label'  => 'Send kort',
             'ignore' => true,
-            'order'  => 93,
+            'order'  => 94,
             'class'  => 'submit',
         ));
         $send_card->setDecorators(array(
@@ -96,6 +102,7 @@ class Default_Form_Greeting extends Zend_Form
             $to_email,
             $add_recipient,
             $greeting,
+            $signature,
             $show_card,
             $send_card,
             $gid,

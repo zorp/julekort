@@ -11,6 +11,8 @@ Default_Model_Greeting:
       type: string(255)
     from_email:
       type: string(255)
+    signature:
+      type: boolean
     greeting:
       type: clob
   relations:
