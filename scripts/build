@@ -5,14 +5,42 @@ error_reporting(E_ALL);
 
 class Setup {
 
-    const LIBRARY = 'library';
-    const DOCTRINE_DIR = 'src/vendor/doctrine/lib';
-    const ZFDOCTRINE_DIR = 'src/vendor/zf-doctrine/library';
+    const LIBRARY        = 'library';
+    const ZF_DIR         = 'src/vendor/zf/library/Zend';
+    const DOCTRINE_DIR   = 'src/vendor/doctrine/lib';
+    const ZFDOCTRINE_DIR = 'src/vendor/zf-doctrine/library/ZFDoctrine';
+
+    const ZF_BIN         = 'src/vendor/zf/bin/zf.sh';
 
     public function __construct()
     {
+        $this->_zendFrameworkSetup();
         $this->_doctrineSetup();
         $this->_zfDoctrineSetup();
+    }
+
+    protected function _zendFrameworkSetup()
+    {
+        try {
+            if(!is_dir(self::ZF_DIR)) {
+                throw new Exception('Could not find Doctrine in src/vendor.');
+            }
+
+            $copy = shell_exec('cp -R -a ' . self::ZF_DIR . ' library 2>&1');
+            if(!empty($copy)) {
+                throw new Exception('Could not copy the Doctrine directory');
+            }
+
+            $config = shell_exec(self::ZF_BIN . ' create config');
+            if(!empty($config)) {
+                throw new Exception('Could not create Zend Tool config');
+            }
+
+            shell_exec('echo \'php.include_path = "{$PWD}/library/"\' >> ~/.zf.ini')
+
+        } catch(Exception $e) {
+            print "Caught exception: \n" . $e->getMessage() . "\n";
+        }
     }
 
     protected function _doctrineSetup()
@@ -38,10 +66,18 @@ class Setup {
                 throw new Exception('Could not find zf-doctrine in src/vendor.');
             }
 
-            $copy = shell_exec('cp -R -a ' . self::ZFDOCTRINE_DIR . '/*' . ' library 2>&1');
+            // copy directory
+            $copy = shell_exec('cp -R -a ' . self::ZFDOCTRINE_DIR . ' library 2>&1');
             if(!empty($copy)) {
                 throw new Exception('Could not copy the Doctrine directory');
             }
+
+            // setup zend association
+            $provider = shell_exec(self::ZF_BIN' enable config.provider ZFDoctrine_Tool_DoctrineProvider');
+            if(!empty($provider)) {
+                throw new Exception('Could not setup the Zend_Tool Doctrine Provider');
+            }
+
         } catch(Exception $e) {
             print "Caught exception: \n" . $e->getMessage() . "\n";
         }
