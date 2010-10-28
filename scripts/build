@@ -36,7 +36,7 @@ class Setup {
                 throw new Exception('Could not create Zend Tool config');
             }
 
-            shell_exec('echo \'php.include_path = "{$PWD}/library/"\' >> ~/.zf.ini')
+            shell_exec('echo \'php.include_path = "{$PWD}/library/"\' >> ~/.zf.ini');
 
         } catch(Exception $e) {
             print "Caught exception: \n" . $e->getMessage() . "\n";
