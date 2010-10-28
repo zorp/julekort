@@ -12,7 +12,7 @@ class Setup {
     public function __construct()
     {
         $this->_doctrineSetup();
-        $this->_zfDoctrineSetup()
+        $this->_zfDoctrineSetup();
     }
 
     protected function _doctrineSetup()
