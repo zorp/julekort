@@ -14,7 +14,6 @@ class Setup {
     public function __construct()
     {
         $this->_pwd = trim(shell_exec('pwd'));
-        set_include_path($this->_pwd . '/library' . PATH_SEPARATOR . get_include_path());
 
         $this->_zendFrameworkSetup();
         $this->_doctrineSetup();
@@ -34,7 +33,7 @@ class Setup {
             }
 
             $config = shell_exec(self::ZF_BIN . ' create config');
-            $include = shell_exec('echo \'php.includepath = "' . $this->_pwd . '/library"\' >> ~/.zf.ini');
+            $include = shell_exec('echo \'php.include_path = "' . $this->_pwd . '/library"\' >> ~/.zf.ini');
             print $include;
 
         } catch(Exception $e) {
