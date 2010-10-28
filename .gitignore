@@ -1,4 +1,5 @@
 .DS_Store
 library/*
+!library/Verk
 application/models/Base/*
 application/configs/application.ini
