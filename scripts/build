@@ -16,7 +16,7 @@ class Setup {
 
     public function __construct()
     {
-        $this->_pwd = shell_exec('pwd');
+        $this->_pwd = trim(shell_exec('pwd'));
 
         $this->_zendFrameworkSetup();
         $this->_doctrineSetup();
