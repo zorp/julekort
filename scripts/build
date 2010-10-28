@@ -12,8 +12,12 @@ class Setup {
 
     const ZF_BIN         = 'src/vendor/zf/bin/zf.sh';
 
+    protected $_pwd = null;
+
     public function __construct()
     {
+        $this->_pwd = shell_exec('pwd');
+
         $this->_zendFrameworkSetup();
         $this->_doctrineSetup();
         $this->_zfDoctrineSetup();
@@ -32,11 +36,8 @@ class Setup {
             }
 
             $config = shell_exec(self::ZF_BIN . ' create config');
-            if(!empty($config)) {
-                throw new Exception('Could not create Zend Tool config');
-            }
-
-            shell_exec('echo \'php.includepath = "$PWD/library"\' >> ~/.zf.ini');
+            $include = shell_exec('echo \'php.includepath = "' . $this->_pwd . '/library"\' >> ~/.zf.ini');
+            print $include;
 
         } catch(Exception $e) {
             print "Caught exception: \n" . $e->getMessage() . "\n";
