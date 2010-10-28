@@ -2,7 +2,6 @@
 <?php
 error_reporting(E_ALL);
 
-
 class Setup {
 
     const LIBRARY        = 'library';
@@ -12,11 +11,10 @@ class Setup {
 
     const ZF_BIN         = 'src/vendor/zf/bin/zf.sh';
 
-    protected $_pwd = null;
-
     public function __construct()
     {
         $this->_pwd = trim(shell_exec('pwd'));
+        set_include_path($this->_pwd . '/library' . PATH_SEPARATOR . get_include_path());
 
         $this->_zendFrameworkSetup();
         $this->_doctrineSetup();
@@ -74,7 +72,7 @@ class Setup {
             }
 
             // setup zend association
-            $provider = shell_exec(self::ZF_BIN . ' enable config.provider ZFDoctrine_Tool_DoctrineProvider');
+            $provider = shell_exec('sh ' . self::ZF_BIN . ' enable config.provider ZFDoctrine_Tool_DoctrineProvider');
             if(!empty($provider)) {
                 throw new Exception('Could not setup the Zend_Tool Doctrine Provider');
             }
