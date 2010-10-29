@@ -14,7 +14,7 @@ ebst = {
         }).trigger('click');
 
         $('textarea#greeting').autoGrow().charCounter(450, {
-        	format: "%1 karaktere tilbage!",
+            format: "%1 karaktere tilbage!"
         });
         $('textarea#greeting').bind('keyup', function() {
             var textarea = $(this).val();
