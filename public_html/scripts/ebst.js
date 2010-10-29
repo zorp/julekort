@@ -32,7 +32,7 @@ ebst = {
                 width: w,
                 flashvars: {
                     signature: signature,
-                    greeting: $('.flash-text').html()
+                    greeting: escape($('.flash-text').html())
                 }
             });
         }

@@ -21,6 +21,6 @@ return array(
     Zend_Validate_Int::NOT_INT                     => '',
     Zend_Validate_LessThan::NOT_LESS               => '',*/
     Zend_Validate_NotEmpty::IS_EMPTY               => 'Dette felt er krævet',
-    Zend_Validate_StringLength::TOO_SHORT          => 'Feltet indeholder mindre end det tilladte antal karaktere',
-    Zend_Validate_StringLength::TOO_LONG           => 'Feltet indeholder mere end det tilladte antal karaktere',
+    Zend_Validate_StringLength::TOO_SHORT          => 'Feltet indeholder mindre end det tilladte antal karakterer',
+    Zend_Validate_StringLength::TOO_LONG           => 'Feltet indeholder mere end det tilladte antal karakterer',
 );

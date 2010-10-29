@@ -141,12 +141,13 @@ Kode: <strong>' . $model->hash . '</strong></p>
 <p>Venlig hilsen<br />
 ' . $model->from_name . '</p>');
 
-            $mail->send($tr);
+            //$mail->send($tr);
         }
 
         $this->view->assign(array(
+            'signature'  => $model->signature,
             'recipients' => $model->Recipient,
-            'hash' => $model->hash
+            'hash'       => $model->hash
         ));
 
     }

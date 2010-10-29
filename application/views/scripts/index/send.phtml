@@ -22,4 +22,12 @@
         ), 'view'); ?>"><?php print $this->hash; ?></a>
     </p>
     <p>For at se kortet kan du trykke på din hemmelige kode her oven over</p>
+    <br>
+    <p>
+        <a class="new" href="<?php print $this->url(array(
+            'controller' => 'index',
+            'action' => 'new',
+            'signature' => $this->signature,
+        )); ?>">Skriv nyt julekort</a>
+    </p>
 </div>

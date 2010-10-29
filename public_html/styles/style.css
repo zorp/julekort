@@ -249,11 +249,14 @@ form ul.errors {
     display: block;
     width: 150px;
     border: 1px solid #555;
-    text-align:center;
+    text-align: center;
     padding: 6px;
     font-size: 16px;
     background-color: #F3F0E9;
 }
+    .send a:hover {
+        text-decoration: underline;
+    }
     .send .view:hover {
         background-color: #fff;
     }
@@ -329,6 +332,7 @@ form input.submit {
     border: 1px solid #A1A29C;
     background-color: #eee;
     width: auto;
+    height: 26px;
 }
 form button {
     float:left;
