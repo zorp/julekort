@@ -72,9 +72,7 @@ class Setup {
 
             // setup zend association
             $provider = shell_exec('sh ' . self::ZF_BIN . ' enable config.provider ZFDoctrine_Tool_DoctrineProvider');
-            if(!empty($provider)) {
-                throw new Exception('Could not setup the Zend_Tool Doctrine Provider');
-            }
+            print $provider;
 
         } catch(Exception $e) {
             print "Caught exception: \n" . $e->getMessage() . "\n";

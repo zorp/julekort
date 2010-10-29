@@ -22,8 +22,7 @@ ebst = {
 
     binds: {
         flash: function(selector, h, w) {
-
-            var check_signature = ($('.signature:checkbox:checked').val()) ? 'true' : 'false';
+            var check_signature = ($('.signature').val() == 'true') ? 'true' : 'false';
             var use_signature = ($('.use-signature').val()) ? 'true' : 'false';
             var signature = (check_signature == 'true' || use_signature == 'true') ? 'true' : 'false';
 

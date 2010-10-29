@@ -65,11 +65,10 @@ class Default_Form_Greeting extends Zend_Form
             'rows' => 5,
         ));
 
-        $signature = new Zend_Form_Element_Checkbox('signature', array(
-            'label'  => 'Underskrift',
-            'value'  => 'TRUE',
-            'order'  => 92,
-            'class'  => 'signature',
+        $signature = new Zend_Form_Element_Hidden('signature', array(
+            'value' => 'false',
+            'order' => 998,
+            'class' => 'signature',
         ));
 
         $show_card = new Zend_Form_Element_Button('show_card', array(
@@ -102,9 +101,9 @@ class Default_Form_Greeting extends Zend_Form
             $to_email,
             $add_recipient,
             $greeting,
-            $signature,
             $show_card,
             $send_card,
+            $signature,
             $gid,
         ));
     }

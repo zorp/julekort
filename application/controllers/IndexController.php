@@ -33,6 +33,14 @@ class IndexController extends Zend_Controller_Action
     {
         $form = $this->getForm();
 
+        // sanitize the signature param
+        $signature = $this->_getParam('signature', 'false');
+        if($signature !== 'true' && $signature !== 'false') {
+            $signature = 'false';
+        }
+
+        $form->getElement('signature')->setValue($signature);
+
         if(!$this->getRequest()->isPost()) {
             $this->view->form = $form;
             return;
@@ -48,7 +56,7 @@ class IndexController extends Zend_Controller_Action
         $data = array(
             'from_name'  => $this->_getParam('from_name'),
             'from_email' => $this->_getParam('from_email'),
-            'signature'  => $this->_getParam('signature'),
+            'signature'  => ($signature == 'true') ? true : false,
             'greeting'   => $this->_getParam('greeting'),
             'Recipient'  => $form->getRecipients(),
         );
