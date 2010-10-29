@@ -13,7 +13,9 @@ ebst = {
             ebst.binds.flash('.view .flash', 600, 440);
         }).trigger('click');
 
-        $('textarea#greeting').autoGrow();
+        $('textarea#greeting').autoGrow().charCounter(450, {
+        	format: "%1 karaktere tilbage!",
+        });
         $('textarea#greeting').bind('keyup', function() {
             var textarea = $(this).val();
             $('.flash-text').html(textarea);

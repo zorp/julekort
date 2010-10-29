@@ -61,8 +61,8 @@ class Default_Form_Greeting extends Zend_Form
             'validators' => array(
                 array('StringLength', false, array(0, 450))
             ),
-            'cols' => 40,
-            'rows' => 5,
+            'cols'  => 40,
+            'rows'  => 5,
         ));
 
         $signature = new Zend_Form_Element_Hidden('signature', array(
