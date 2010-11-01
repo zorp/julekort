@@ -1,6 +1,10 @@
 ebst = {
 
     init: function() {
+
+        var content = $('textarea').val().replace(/\n/g, "<br>");
+        $('.flash-text').html(content);
+
         $('.add-recipient').bind('click', function() {
             ebst.addRecipient();
         });
@@ -13,12 +17,14 @@ ebst = {
             ebst.binds.flash('.view .flash', 600, 440);
         }).trigger('click');
 
-        $('textarea#greeting').autoGrow().charCounter(450, {
-            format: "%1 karakterer tilbage!"
+        $('textarea').autogrow();
+        $('textarea').charCounter(450, {
+            container: '<div></div>',
+            format: "%1 karakterer tilbage"
         });
-        $('textarea#greeting').bind('keyup', function() {
-            var textarea = $(this).val();
-            $('.flash-text').html(textarea);
+        $('textarea').keyup(function() {
+            content = $(this).val().replace(/\n/g, "<br>");
+            $('.flash-text').html(content);
         });
     },
 

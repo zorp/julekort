@@ -232,9 +232,8 @@ p {
     margin-bottom: 10px;
 }
 form ul.errors {
+    margin-left: 0px;
     list-style:none;
-    float:right;
-    width: 230px;
 }
     form ul.errors li {
         color: #ff0000;
@@ -343,9 +342,13 @@ form button {
     margin-right: 5px;
 }
 form div#buttons {
+    margin-top: 10px;
     clear:both;
     position:relative;
     left: 80px;
+}
+.ie7 form div#buttons {
+    left: 0px;
 }
 
 
