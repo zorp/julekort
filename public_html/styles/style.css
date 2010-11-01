@@ -234,7 +234,7 @@ p {
 form ul.errors {
     list-style:none;
     float:right;
-    width: 240px;
+    width: 230px;
 }
     form ul.errors li {
         color: #ff0000;
@@ -344,7 +344,8 @@ form button {
 }
 form div#buttons {
     clear:both;
-    margin-left: 80px;
+    position:relative;
+    left: 80px;
 }
 
 
