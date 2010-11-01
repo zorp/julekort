@@ -12,11 +12,11 @@ ebst = {
         });
 
         $('.view-card').bind('click', function() {
-            ebst.binds.flash('.new .flash', 440, 320);
+            ebst.binds.flash('.new .flash', 440, 320, false);
         }).trigger('click');
 
         $('.reload-card').bind('click', function() {
-            ebst.binds.flash('.view .flash', 600, 440);
+            ebst.binds.flash('.view .flash', 600, 440, true);
         }).trigger('click');
 
         $('#greeting').autogrow();
@@ -31,10 +31,20 @@ ebst = {
     },
 
     binds: {
-        flash: function(selector, h, w) {
+        flash: function(selector, h, w, isview) {
             var check_signature = ($('.signature').val() == 'true') ? 'true' : 'false';
             var use_signature = ($('.use-signature').val()) ? 'true' : 'false';
             var signature = (check_signature == 'true' || use_signature == 'true') ? 'true' : 'false';
+
+            if(isview) {
+                if($.browser.msie){
+                    var greeting = $('.flash-text').html();
+                } else {
+                    var greeting = $('.flash-text').text();
+                }
+            } else {
+                var greeting = $('.flash-text').html();
+            }
 
             $(selector).flash({
                 swf: '/flash/ebst_julekort.swf',
@@ -42,7 +52,7 @@ ebst = {
                 width: w,
                 flashvars: {
                     signature: signature,
-                    greeting: escape($('.flash-text').html())
+                    greeting: escape(greeting)
                 }
             });
         }
