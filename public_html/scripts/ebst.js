@@ -36,6 +36,7 @@ ebst = {
             var use_signature = ($('.use-signature').val()) ? 'true' : 'false';
             var signature = (check_signature == 'true' || use_signature == 'true') ? 'true' : 'false';
 
+            // @todo find a more elegant way of fixing ie's newline normalizing hell
             if(isview) {
                 if($.browser.msie){
                     var greeting = $('.flash-text').html();
@@ -50,10 +51,10 @@ ebst = {
                 swf: '/flash/ebst_julekort.swf',
                 height: h,
                 width: w,
-                flashvars: {
+                flashvars: $.param({
                     signature: signature,
-                    greeting: escape(greeting)
-                }
+                    greeting: greeting
+                })
             });
         }
     },
@@ -74,6 +75,7 @@ ebst = {
     }
 
 }
+
 
 jQuery(document).ready(function($) {
     ebst.init();
