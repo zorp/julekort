@@ -2,8 +2,10 @@ ebst = {
 
     init: function() {
 
-        var content = $('#greeting').val().replace(/\n/g, "<br>");
-        $('.flash-text').html(content);
+        if($('#greeting').length !== 0) {
+            var content = $('#greeting').val().replace(/\n/g, "<br>");
+            $('.flash-text').html(content);
+        }
 
         $('.add-recipient').bind('click', function() {
             ebst.addRecipient();
@@ -22,8 +24,8 @@ ebst = {
             container: '<div></div>',
             format: "%1 karakterer tilbage"
         });
-        $('#greeting').keyup(function() {
-            content = $(this).val().replace(/\n/g, "<br>");
+        $('#greeting').bind('keyup', function() {
+            var content = $(this).val().replace(/\n/g, "<br>");
             $('.flash-text').html(content);
         });
     },
