@@ -17,12 +17,12 @@ ebst = {
             ebst.binds.flash('.view .flash', 600, 440);
         }).trigger('click');
 
-        $('textarea').autogrow();
-        $('textarea').charCounter(450, {
+        $('#greeting').autogrow();
+        $('#greeting').charCounter(450, {
             container: '<div></div>',
             format: "%1 karakterer tilbage"
         });
-        $('textarea').keyup(function() {
+        $('#greeting').keyup(function() {
             content = $(this).val().replace(/\n/g, "<br>");
             $('.flash-text').html(content);
         });

@@ -7,7 +7,7 @@ class Default_Form_Greeting extends Zend_Form
     {
         $this->setAction('/new/');
         $this->setMethod(Zend_Form::METHOD_POST);
-        $this->setAttrib('id', 'greeting');
+        $this->setAttrib('id', 'greet');
         $this->setElementFilters(array('StringTrim'));
 
         $gid = new Zend_Form_Element_Hidden('gid', array(
