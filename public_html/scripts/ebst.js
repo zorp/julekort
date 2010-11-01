@@ -2,7 +2,7 @@ ebst = {
 
     init: function() {
 
-        var content = $('textarea').val().replace(/\n/g, "<br>");
+        var content = $('#greeting').val().replace(/\n/g, "<br>");
         $('.flash-text').html(content);
 
         $('.add-recipient').bind('click', function() {
