@@ -2,7 +2,7 @@ ebst = {
 
     init: function() {
 
-        if($('#greeting').length !== 0) {
+        if($('#greeting').length != 0) {
             var content = $('#greeting').val().replace(/\n/g, "<br>");
             $('.flash-text').html(content);
         }
