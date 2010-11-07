@@ -33,14 +33,6 @@ class IndexController extends Zend_Controller_Action
     {
         $form = $this->getForm();
 
-        // sanitize the signature param
-        $signature = $this->_getParam('signature', 'false');
-        if($signature !== 'true' && $signature !== 'false') {
-            $signature = 'false';
-        }
-
-        $form->getElement('signature')->setValue($signature);
-
         if(!$this->getRequest()->isPost()) {
             $this->view->form = $form;
             return;
@@ -56,7 +48,6 @@ class IndexController extends Zend_Controller_Action
         $data = array(
             'from_name'  => $this->_getParam('from_name'),
             'from_email' => $this->_getParam('from_email'),
-            'signature'  => ($signature == 'true') ? true : false,
             'greeting'   => $this->_getParam('greeting'),
             'Recipient'  => $form->getRecipients(),
         );
@@ -100,6 +91,9 @@ class IndexController extends Zend_Controller_Action
             $this->_redirector->gotoUrl('/notfound/');
         }
 
+        $model->seen = $model->seen++;
+        $model->save();
+
         $this->view->assign(array(
             'hash'      => $model->hash,
             'signature' => $model->signature,
@@ -129,11 +123,11 @@ class IndexController extends Zend_Controller_Action
 
             $mail->addTo($recipient->to_email, $recipient->to_name);
             $mail->setFrom($options['outbound']['email'], $options['outbound']['from']);
-            $mail->setSubject('Julekort fra Erhvervs- og Byggestyrelsen');
+            $mail->setSubject('Julekort fra Verk');
 
             // @todo move this to a view and render it that way
             $mail->setBodyHtml('<h2>Kære ' . $recipient->to_name . '</h2>
-<p>Du har fået en julehilsen fra Erhvervs- og Byggestyrelsen.</p>
+<p>Du har fået en julehilsen fra Verk.</p>
 <p>For at se kortet, <a href="http://' . $this->getRequest()->getServer('HTTP_HOST') . '/view/' . $model->hash . '">klik her</a>.</p>
 <p>Virker linket ikke, så kopiér koden herunder, <a href="http://' . $this->getRequest()->getServer('HTTP_HOST') . '">klik her</a> og indsæt koden.<br />
 Kode: <strong>' . $model->hash . '</strong></p>

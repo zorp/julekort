@@ -15,6 +15,9 @@ Default_Model_Greeting:
       type: boolean
     greeting:
       type: clob
+    seen:
+      type: integer
+      default: 0
   relations:
     Recipient:
       class: Default_Model_GreetingRecipient

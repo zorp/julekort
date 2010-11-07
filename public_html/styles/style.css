@@ -209,9 +209,7 @@ button {  width: auto; overflow: visible; }
 /* Primary styles
    Author: Christian Kirkegaard
  */
-body {
-    background-color: #625E53;
-}
+body {}
 
 h1 {
     font-size: 24px;
@@ -244,48 +242,21 @@ form ul.errors {
     display:none;
 }
 
-.send .view {
-    display: block;
-    width: 150px;
-    border: 1px solid #555;
-    text-align: center;
-    padding: 6px;
-    font-size: 16px;
-    background-color: #F3F0E9;
-}
-    .send a:hover {
-        text-decoration: underline;
-    }
-    .send .view:hover {
-        background-color: #fff;
-    }
+.send .view {}
 
-
-header {
-    background-image: url('/images/header.jpg');
-    height: 111px;
-}
-    header .logo {
-        height: 73px;
-    }
+header {}
+    header .logo {}
         header .logo a {
             display:block;
-            margin-top: 10px;
         }
 
     header .menu {
         margin-top: 8px;
-        font-size: 12px;
+        font-size: 14px;
     }
 
-#container {
-    background-image: url('/images/container-middle.gif');
-    background-repeat: repeat-y;
-}
+#container {}
     #container .content {
-        background-image: url('/images/container-top.gif');
-        background-repeat: no-repeat;
-        background-position: top center;
         padding: 20px 0px;
         overflow:hidden;
     }
@@ -345,17 +316,10 @@ form div#buttons {
     margin-top: 10px;
     clear:both;
     position:relative;
-    left: 80px;
-}
-.ie7 form div#buttons {
-    left: 0px;
 }
 
 
-footer {
-    background-image: url('/images/footer.gif');
-    height: 37px;
-}
+footer {}
 
 
 
