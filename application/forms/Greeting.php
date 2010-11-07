@@ -55,10 +55,10 @@ class Default_Form_Greeting extends Zend_Form
 
 
         $greeting = new Zend_Form_Element_Textarea('greeting', array(
-            'label'      => 'Tekst:',
-            'required'   => true,
-            'order'      => 91,
-            'validators' => array(
+            'label'       => 'Tekst:',
+            'required'    => true,
+            'order'       => 91,
+            'validators'  => array(
                 array('StringLength', false, array(0, 450))
             ),
             'cols'  => 40,
@@ -79,7 +79,11 @@ class Default_Form_Greeting extends Zend_Form
         ));
         $show_card->setDecorators(array(
             'ViewHelper',
-            array('HtmlTag', array('tag' => 'div', 'openOnly' => true, 'id' => 'buttons'))
+            array('HtmlTag', array(
+                'tag' => 'dd',
+                'openOnly' => true,
+                'id' => 'buttons'
+            ))
         ));
 
         $send_card = new Zend_Form_Element_Submit('send_card', array(
@@ -90,7 +94,10 @@ class Default_Form_Greeting extends Zend_Form
         ));
         $send_card->setDecorators(array(
             'ViewHelper',
-            array('HtmlTag', array('tag' => 'div', 'closeOnly' => true))
+            array('HtmlTag', array(
+                'tag' => 'dd',
+                'closeOnly' => true
+            ))
         ));
 
 

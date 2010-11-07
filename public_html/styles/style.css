@@ -242,6 +242,25 @@ p.description {
 
 
 form {}
+    form dt,
+    form dd {
+        margin-bottom: 10px;
+    }
+    form dt {
+        float:left;
+        width: 80px;
+    }
+    form dd {
+        float:left;
+        width: 240px;
+    }
+    form dd#buttons {
+        padding-left: 80px;
+    }
+        form dd#buttons button {
+            margin-right: 5px;
+        }
+
     form ul.errors {
         margin-left: 0px;
         list-style:none;
@@ -253,12 +272,25 @@ form {}
         display:block;
         margin-bottom: 5px;
     }
-    form input {
+    form input,
+    form textarea {
+        background-image: url('/images/input-gradient.gif');
+        background-repeat: repeat-x;
+        background-position: top left;
+        border: 1px solid #ccc;
         padding: 4px;
-        width: 240px;
+        width: 232px;
     }
+    form button,
     form input.submit {
-        font-size: 18px;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        float:left;
+        padding: 2px 6px;
+        height: 26px;
         width: auto;
     }
 
@@ -291,7 +323,6 @@ header {
 
 footer {
     font-size: 12px;
-    margin: 10px auto;
     text-align:right;
 }
 
