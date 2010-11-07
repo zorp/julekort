@@ -27,29 +27,23 @@
 </head>
 <body class="<?php print $this->BodyClass(array('action')); ?>">
 
-    <header class="container_8">
-        <div class="logo grid_4">
-            <a href="/"><img src="/images/logo.jpg"></a>
-        </div>
-        <div class="menu grid_4">
-            <a href="<?php print $this->url(array(
-                'controller' => 'index',
-                'action' => 'new'
-            )); ?>">Opret nyt kort</a>
-        </div>
-    </header>
+    <div id="page" class="container_8">
+        <header class="grid_8">
+            <h1><a href="/">Verk Julekort</a></h1>
+            <h4>Send en hilsen til end du har kær</h4>
+        </header>
 
-    <div id="container" class="container_8">
-        <div class="content">
+        <div id="container" class="grid_8">
             <?php echo $this->layout()->content; ?>
+            <div class="clear"></div>
         </div>
-        <div class="clear"></div>
+
+        <footer class="grid_8">
+            <p>Vi kommer med gaverne<br>
+                -<a href="http://verk.dk">Verk</a>
+            </p>
+        </footer>
     </div>
-
-    <footer class="container_8">
-        &nbsp;
-    </footer>
-
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <script>!window.jQuery && document.write('<script src="/scripts/jquery-1.4.3.min.js"><\/script>')</script>

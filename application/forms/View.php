@@ -10,8 +10,9 @@ class Default_Form_View extends Zend_Form
         $this->setAttrib('id', 'view');
 
         $hash = new Zend_Form_Element_Text('hash', array(
-            'label'      => 'Din kode:',
-            'required'   => true,
+            'label'       => 'Indtast din kode:',
+            'description' => 'Har du modtaget en kode pr mail kan du indtaste den her for at få vist dit personlige kort',
+            'required'    => true,
         ));
         $submit = new Zend_Form_Element_Submit('submit', array(
             'label'  => 'Vis kort',

@@ -105,14 +105,6 @@ h1,h2,h3,h4,h5,h6 { font-weight: bold; }
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 
-a, a:active, a:visited {
-    color: #333;
-    text-decoration: none;
-}
-a:hover {
-    color: #333;
-    text-decoraiton:underline;
-}
 
 
 ul, ol { margin-left: 1.8em; }
@@ -211,30 +203,63 @@ button {  width: auto; overflow: visible; }
  */
 body {}
 
+a {
+    color: #33BEFF !important;
+    text-decoration: none;
+}
+a:hover {
+    border-bottom: 1px dotted #33BEFF;
+}
+
 h1 {
+    color: #33BEFF;
     font-size: 24px;
-    margin-bottom: 10px;
 }
 h2 {
     font-size: 18px;
-    margin-bottom: 10px;
 }
 h3 {
     font-size: 16px;
     margin-bottom: 10px;
 }
 h4 {
+    font-family: georgia;
+    font-style:italic;
+    font-weight: normal;
     font-size: 14px;
 }
 p {
+    font-family: georgia;
+    line-height: 1.5em;
     margin-bottom: 10px;
 }
-form ul.errors {
-    margin-left: 0px;
-    list-style:none;
+p.description {
+    color: #888;
+    font-size: 12px;
+    font-style:italic;
+    margin-bottom: 0px;
 }
-    form ul.errors li {
-        color: #ff0000;
+
+
+form {}
+    form ul.errors {
+        margin-left: 0px;
+        list-style:none;
+    }
+        form ul.errors li {
+            color: #ff0000;
+        }
+    form label {
+        display:block;
+        margin-bottom: 5px;
+    }
+    form input {
+        padding: 4px;
+        width: 240px;
+    }
+    form input.submit {
+        font-size: 18px;
+        width: auto;
     }
 
 
@@ -244,82 +269,31 @@ form ul.errors {
 
 .send .view {}
 
-header {}
-    header .logo {}
-        header .logo a {
-            display:block;
+header {
+    margin-top: 20px;
+}
+    header h1 {}
+        header h1 a {
+            color: #33BEFF;
         }
 
-    header .menu {
-        margin-top: 8px;
-        font-size: 14px;
-    }
+    header .menu {}
 
-#container {}
-    #container .content {
-        padding: 20px 0px;
-        overflow:hidden;
-    }
+#container {
+    border-top: 3px solid #000;
+    border-bottom: 1px solid #bfbfbf;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+    #container .content {}
 
-
-/**
- * Forms
- */
-form dt,
-form dd {
-    margin-bottom: 10px;
-    overflow:hidden;
+footer {
+    font-size: 12px;
+    margin: 10px auto;
+    text-align:right;
 }
-    form dd#add_recipient-element {
-        border-top: 1px dotted #aaa;
-        padding-top: 10px;
-        margin-top: 10px;
-    }
-    form dd#from_email-element {
-        border-bottom: 1px dotted #aaa;
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-    }
-form dt {
-    float:left;
-    width: 80px;
-}
-form dd {
-    float:left;
-    width: 230px;
-}
-form label {
-    display:block;
-    padding: 4px;
-}
-form textarea,
-form button,
-form input {
-    border: 1px solid #A1A29C;
-    font-size: 14px;
-    padding: 4px;
-    width: 220px;
-}
-form button,
-form input.submit {
-    color: #555;
-    border: 1px solid #A1A29C;
-    background-color: #eee;
-    width: auto;
-    height: 26px;
-}
-form button {
-    float:left;
-    margin-right: 5px;
-}
-form div#buttons {
-    margin-top: 10px;
-    clear:both;
-    position:relative;
-}
-
-
-footer {}
 
 
 

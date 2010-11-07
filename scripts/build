@@ -15,9 +15,36 @@ class Setup {
     {
         $this->_pwd = trim(shell_exec('pwd'));
 
+        $this->_baseSetup();
+
         $this->_zendFrameworkSetup();
         $this->_doctrineSetup();
         $this->_zfDoctrineSetup();
+
+        $this->_buildModels();
+    }
+
+    protected function _baseSetup()
+    {
+        if(!is_dir(self::ZF_DIR) || !is_dir(self::DOCTRINE_DIR) || !is_dir(self::ZFDOCTRINE_DIR)) {
+            print "Didnt find all needed submodules\n";
+
+            print "Initializing submodules\n";
+            shell_exec('git submodule init');
+
+            print "Updating submodules\n";
+            shell_exec('git submodule update');
+        }
+    }
+
+    protected function _buildModels()
+    {
+        if(!is_dir('application/models/Base')) {
+            print "Didnt find the base models. Will generate them now\n";
+            shell_exec(self::ZF_BIN . ' generate-models-from-yaml doctrine');
+            print "Setting up the database\n";
+            shell_exec(self::ZF_BIN . ' build-project doctrine --force --reload');
+        }
     }
 
     protected function _zendFrameworkSetup()
