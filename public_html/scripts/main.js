@@ -48,7 +48,7 @@ ebst = {
             }
 
             $(selector).flash({
-                swf: '/flash/ebst_julekort.swf',
+                swf: '/flash/kort.swf',
                 height: h,
                 width: w,
                 flashvars: $.param({

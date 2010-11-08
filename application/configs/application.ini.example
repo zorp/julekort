@@ -27,7 +27,7 @@ resources.view.language = "en"
 resources.view.helperPath.Verk_View_Helper = APPLICATION_PATH "/../library/Verk/View/Helper/"
 resources.view.helperPathPrefix.Verk_View_Helper = "Verk_View_Helper"
 
-resources.doctrine.connections.default.dsn = "mysql://root:root@localhost/ebst_dev"
+resources.doctrine.connections.default.dsn = "mysql://root:root@localhost/julekort"
 resources.doctrine.manager.attributes.attr_model_loading = "model_loading_zend"
 
 pluginpaths.ZFDoctrine_Application_Resource = "ZFDoctrine/Application/Resource"
@@ -49,8 +49,8 @@ resources.router.routes.view.defaults.action = "view"
 
 
 ; Mail
-mail.outbound.email     = "no-reply@ebst.dk"
-mail.outbound.from      = "Erhvervs- og Byggestyrelsen"
+mail.outbound.email     = "no-reply@verk.dk"
+mail.outbound.from      = "Verk Julekort"
 mail.outbound.host      = "smtp.gmail.com"
 mail.outbound.auth      = "login"
 mail.outbound.username  = "username"
