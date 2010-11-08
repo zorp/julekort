@@ -6,4 +6,12 @@ Generic christmas cards
 
     [Sites]$ git clone git@github.com:verk/julekort.git
     [Sites]$ cd julekort
+    [Sites/julekort]$ cp application/configs/application.ini.example application/configs/application.ini
+    [Sites/julekort]$ vim application/configs/application.ini
+    [Sites/julekort]$ zf create-database doctrine
     [Sites/julekort]$ ./scripts/build
+
+###Database
+
+    [Sites/julekort]$ zf generate-models-from-yaml doctrine
+    [Sites/julekort]$ zf build-project doctrine --reload
