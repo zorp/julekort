@@ -12,11 +12,11 @@ ebst = {
         });
 
         $('.view-card').bind('click', function() {
-            ebst.binds.flash('.new .flash', 440, 320, false);
+            ebst.binds.flash('.new .flash', 480, 320, false);
         }).trigger('click');
 
         $('.reload-card').bind('click', function() {
-            ebst.binds.flash('.view .flash', 600, 440, true);
+            ebst.binds.flash('.view .flash', 600, 400, true);
         }).trigger('click');
 
         $('#greeting').autogrow();
