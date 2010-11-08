@@ -6,8 +6,6 @@ Generic christmas cards
 
     [Sites]$ git clone git@github.com:verk/julekort.git
     [Sites]$ cd julekort
-    [Sites/julekort]$ git submodules init
-    [Sites/julekort]$ git submodules update
     [Sites/julekort]$ ./scripts/build
 
 ###Database
