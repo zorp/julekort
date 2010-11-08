@@ -91,7 +91,7 @@ class IndexController extends Zend_Controller_Action
             $this->_redirector->gotoUrl('/notfound/');
         }
 
-        $model->seen = $model->seen++;
+        $model->seen = $model->seen+1;
         $model->save();
 
         $this->view->assign(array(

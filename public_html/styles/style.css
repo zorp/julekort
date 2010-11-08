@@ -294,6 +294,11 @@ form {}
         width: auto;
     }
 
+body.index form dt {
+    float:none;
+    width: auto;
+}
+
 
 .flash-text {
     display:none;

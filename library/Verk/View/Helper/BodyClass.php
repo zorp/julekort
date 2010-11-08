@@ -17,7 +17,8 @@ class Verk_View_Helper_BodyClass extends Zend_View_Helper_Abstract {
             }
         }
 
-        return implode(' ', $this->_data);
+        $output = implode(' ', $this->_data);
+        return ($output) ? $output : 'index';
     }
 
 }
