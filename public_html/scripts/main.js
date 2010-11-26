@@ -1,4 +1,4 @@
-ebst = {
+var verkcard = {
 
     init: function() {
 
@@ -8,15 +8,18 @@ ebst = {
         }
 
         $('.add-recipient').bind('click', function() {
-            ebst.addRecipient();
+            verkcard.addRecipient();
+        });
+        $('.remove-recipient').bind('click', function() {
+            verkcard.removeRecipient();
         });
 
         $('.view-card').bind('click', function() {
-            ebst.binds.flash('.new .flash', 480, 320, false);
+            verkcard.binds.flash('.new .flash', 440, 320, false);
         }).trigger('click');
 
         $('.reload-card').bind('click', function() {
-            ebst.binds.flash('.view .flash', 600, 400, true);
+            verkcard.binds.flash('.view .flash', 600, 440, true);
         }).trigger('click');
 
         $('#greeting').autogrow();
@@ -32,10 +35,6 @@ ebst = {
 
     binds: {
         flash: function(selector, h, w, isview) {
-            var check_signature = ($('.signature').val() == 'true') ? 'true' : 'false';
-            var use_signature = ($('.use-signature').val()) ? 'true' : 'false';
-            var signature = (check_signature == 'true' || use_signature == 'true') ? 'true' : 'false';
-
             // @todo find a more elegant way of fixing ie's newline normalizing hell
             if(isview) {
                 if($.browser.msie){
@@ -51,10 +50,10 @@ ebst = {
                 swf: '/flash/kort.swf',
                 height: h,
                 width: w,
-                flashvars: $.param({
-                    signature: signature,
+                encodeParams: true,
+                flashvars: {
                     greeting: greeting
-                })
+                }
             });
         }
     },
@@ -67,16 +66,28 @@ ebst = {
             data: 'gid=' + gid,
             success: function(elements) {
                 $('#gid').val(++gid);
-                $(elements).insertBefore('#add_recipient-label')
+                $(elements).insertBefore('#recipients')
                            .css({display: 'none'})
                            .fadeIn();
             }
       });
+    },
+
+    removeRecipient: function() {
+        var gid = $('#gid').val();
+        if(gid > 1) {
+            --gid;
+            $('#Recipient-' + gid + '-to_name_' + gid + '-label').remove();
+            $('#Recipient-' + gid + '-to_name_' + gid + '-element').remove();
+            $('#Recipient-' + gid + '-to_email_' + gid + '-label').remove();
+            $('#Recipient-' + gid + '-to_email_' + gid + '-element').remove()
+            $('#gid').val(gid);
+        }
     }
 
 }
 
 
 jQuery(document).ready(function($) {
-    ebst.init();
+    verkcard.init();
 });

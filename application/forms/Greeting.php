@@ -52,14 +52,39 @@ class Default_Form_Greeting extends Zend_Form
             'order'  => 90,
             'class'  => 'add-recipient',
         ));
+        $add_recipient->setDecorators(array(
+            'ViewHelper',
+            array('HtmlTag', array(
+                'tag' => 'div',
+                'openOnly' => true,
+                'id' => 'recipients'
+            ))
+        ));
+        $remove_recipient = new Zend_Form_Element_Button('remove_recipient', array(
+            'label'  => 'Fjern modtager',
+            'ignore' => true,
+            'order'  => 91,
+            'class'  => 'remove-recipient',
+        ));
+        $remove_recipient->setDecorators(array(
+            'ViewHelper',
+            array('HtmlTag', array(
+                'tag' => 'div',
+                'closeOnly' => true,
+                'id' => 'recipients'
+            ))
+        ));
 
 
         $greeting = new Zend_Form_Element_Textarea('greeting', array(
-            'label'       => 'Tekst:',
-            'required'    => true,
-            'order'       => 91,
-            'validators'  => array(
-                array('StringLength', false, array(0, 450))
+            'label'      => 'Tekst:',
+            'required'   => true,
+            'order'      => 93,
+            'validators' => array(
+                array('StringLength', false, array(
+                    'encoding' => 'UTF-8', // @todo why do we need this?!
+                    'max' => 450
+                ))
             ),
             'cols'  => 40,
             'rows'  => 5,
@@ -74,30 +99,23 @@ class Default_Form_Greeting extends Zend_Form
         $show_card = new Zend_Form_Element_Button('show_card', array(
             'label'  => 'Vis kort',
             'ignore' => true,
-            'order'  => 93,
+            'order'  => 94,
             'class'  => 'view-card',
         ));
         $show_card->setDecorators(array(
             'ViewHelper',
-            array('HtmlTag', array(
-                'tag' => 'dd',
-                'openOnly' => true,
-                'id' => 'buttons'
-            ))
+            array('HtmlTag', array('tag' => 'div', 'openOnly' => true, 'id' => 'buttons'))
         ));
 
         $send_card = new Zend_Form_Element_Submit('send_card', array(
             'label'  => 'Send kort',
             'ignore' => true,
-            'order'  => 94,
+            'order'  => 95,
             'class'  => 'submit',
         ));
         $send_card->setDecorators(array(
             'ViewHelper',
-            array('HtmlTag', array(
-                'tag' => 'dd',
-                'closeOnly' => true
-            ))
+            array('HtmlTag', array('tag' => 'div', 'closeOnly' => true))
         ));
 
 
@@ -107,6 +125,7 @@ class Default_Form_Greeting extends Zend_Form
             $to_name,
             $to_email,
             $add_recipient,
+            $remove_recipient,
             $greeting,
             $show_card,
             $send_card,
