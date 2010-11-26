@@ -29,24 +29,43 @@
 
     <div id="page" class="container_8">
         <header class="grid_8">
-            <h1><a href="/">Verk Julekort</a></h1>
-            <h4>Send en hilsen til en du har kær</h4>
+            <div class="grid_2 alpha">
+                <img src="/images/europatent.jpg">
+            </div>
+            <div class="grid_3">
+                <a href="/">
+                    <img src="/images/logo.jpg">
+                </a>
+            </div>
+            <div class="grid_3 omega julehilsen text-right">
+                <img src="/images/julehilsen.jpg">
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="menu">
+                <div class="grid_3 prefix_2 alpha">
+                    www.inspicos.dk
+                </div>
+                <div class="grid_3 omega text-right">
+                    www.inspicos.dk
+                </div>
+            </div>
         </header>
 
-        <div id="container" class="grid_8">
-            <?php echo $this->layout()->content; ?>
+        <div id="container">
+            <div class="grid_8">
+                <?php echo $this->layout()->content; ?>
+                <div class="clear"></div>
+            </div>
             <div class="clear"></div>
         </div>
 
-        <footer class="grid_8">
-            <p>Vi kommer med gaverne<br>
-                -<a href="http://verk.dk">Verk</a>
-            </p>
-        </footer>
+        <footer class="grid_8">&nbsp;</footer>
     </div>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-    <script>!window.jQuery && document.write('<script src="/scripts/jquery-1.4.3.min.js"><\/script>')</script>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>-->
+    <script>!window.jQuery && document.write('<script src="/scripts/jquery-1.4.4.min.js"><\/script>')</script>
 
     <script src="/scripts/jquery.autogrow.js"></script>
     <script src="/scripts/jquery.charcounter.js"></script>
@@ -64,7 +83,7 @@
 
     <!-- asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet
         change the UA-XXXXX-X to be your site's ID -->
-    <script>
+    <!--<script>
         var _gaq = [['_setAccount', 'UA-116454-27'], ['_trackPageview']];
         (function(d, t) {
         var g = d.createElement(t),
@@ -73,7 +92,7 @@
         g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g, s);
         })(document, 'script');
-    </script>
+    </script>-->
 
 </body>
 </html>

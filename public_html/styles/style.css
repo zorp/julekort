@@ -92,7 +92,7 @@ body, select, input, textarea {
   /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */
   color: #444;
   /* set your base font here, to apply evenly */
-  font-family: Arial, Verdana, sans-serif;
+  font-family: Verdana, arial, sans-serif;
 }
 
 /* always force a scrollbar in non-IE */
@@ -201,15 +201,22 @@ button {  width: auto; overflow: visible; }
 /* Primary styles
    Author: Christian Kirkegaard
  */
-body {}
+body {
+    background-color: #00173f;
+    background-image: url('/images/background-repeat.jpg');
+    background-repeat: repeat-x;
+    background-position:top center;
+}
+body.index form dt {
+    float:none;
+    width: auto;
+}
 
 a {
     color: #33BEFF !important;
     text-decoration: none;
 }
-a:hover {
-    border-bottom: 1px dotted #33BEFF;
-}
+a:hover {}
 
 h1 {
     color: #33BEFF;
@@ -239,6 +246,61 @@ p.description {
     font-style:italic;
     margin-bottom: 0px;
 }
+.flash-text {
+    display:none;
+}
+.text-left {
+    text-align:left;
+}
+.text-right {
+    text-align:right;
+}
+
+#page {
+    background-image: url('/images/background.jpg');
+    background-repeat:no-repeat;
+    background-position: 0px 130px;
+    min-height:540px;
+    padding: 20px;
+}
+#page.container_8 {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+
+header {
+    color: #fff;
+    padding-top: 8px;
+    height: 80px;
+}
+    header .julehilsen {
+        padding-top: 13px;
+    }
+    header .menu {
+        position:absolute;
+        font-size: 12px;
+        text-transform: uppercase;
+        height: 18px;
+        bottom: 0px;
+    }
+
+#container {
+    margin-top: 22px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-image: url('/images/transparent-80.png');
+    position:relative;
+    display:inline;
+    float:left;
+}
+    #container .content {}
+
+footer {
+    font-size: 12px;
+    text-align:right;
+}
+
 
 
 form {}
@@ -293,44 +355,6 @@ form {}
         height: 26px;
         width: auto;
     }
-
-body.index form dt {
-    float:none;
-    width: auto;
-}
-
-
-.flash-text {
-    display:none;
-}
-
-.send .view {}
-
-header {
-    margin-top: 20px;
-}
-    header h1 {}
-        header h1 a {
-            color: #33BEFF;
-        }
-
-    header .menu {}
-
-#container {
-    border-top: 3px solid #000;
-    border-bottom: 1px solid #bfbfbf;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-    #container .content {}
-
-footer {
-    font-size: 12px;
-    text-align:right;
-}
-
 
 
 /*
