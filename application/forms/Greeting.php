@@ -90,12 +90,6 @@ class Default_Form_Greeting extends Zend_Form
             'rows'  => 5,
         ));
 
-        $signature = new Zend_Form_Element_Hidden('signature', array(
-            'value' => 'false',
-            'order' => 998,
-            'class' => 'signature',
-        ));
-
         $show_card = new Zend_Form_Element_Button('show_card', array(
             'label'  => 'Vis kort',
             'ignore' => true,
@@ -109,13 +103,20 @@ class Default_Form_Greeting extends Zend_Form
 
         $send_card = new Zend_Form_Element_Submit('send_card', array(
             'label'  => 'Send kort',
-            'ignore' => true,
+            'ignore' => false,
             'order'  => 95,
             'class'  => 'submit',
         ));
         $send_card->setDecorators(array(
             'ViewHelper',
             array('HtmlTag', array('tag' => 'div', 'closeOnly' => true))
+        ));
+
+        $send_card_en = new Zend_Form_Element_Submit('send_card_en', array(
+            'label'  => 'Send engelsk kort',
+            'ignore' => false,
+            'order'  => 96,
+            'class'  => 'submit',
         ));
 
 
@@ -129,7 +130,7 @@ class Default_Form_Greeting extends Zend_Form
             $greeting,
             $show_card,
             $send_card,
-            $signature,
+            $send_card_en,
             $gid,
         ));
     }

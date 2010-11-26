@@ -219,7 +219,7 @@ body {
     background-image: url('/images/background-repeat.jpg');
     background-repeat: repeat-x;
     background-position:top center;
-    font-size: 12px;
+    font-size: 11px;
 }
 body.index form dt {
     float:none;
@@ -227,7 +227,7 @@ body.index form dt {
 }
 
 a {
-    color: #33BEFF !important;
+    color: #555;
     text-decoration: none;
 }
 a:hover {}
@@ -276,6 +276,7 @@ form ul.errors {
     background-position: 0px 130px;
     min-height:540px;
     padding: 20px;
+    float:left;
 }
 #page.container_8 {
     margin-left: 0px;
@@ -293,11 +294,19 @@ header {
     }
     header .menu {
         position:absolute;
-        font-size: 12px;
+        font-size: 11px;
         text-transform: uppercase;
-        height: 18px;
         bottom: 0px;
+        height: 17px;
     }
+        header .menu a {
+            color: #fff;
+            height: 16px;
+            padding: 2px 10px;
+        }
+            header .menu a:hover {
+                background-color: #a0a3a9;
+            }
 
 #container {
     margin-top: 22px;
@@ -309,6 +318,22 @@ header {
     float:left;
 }
     #container .content {}
+
+.lightbox {
+    text-align:center;
+    background-color: #fff;
+    position:absolute;
+    height: 461px;
+    display:none;
+}
+    .lightbox .close {
+        color: #fff;
+        border: none;
+        background-color: #aeafaf;
+        width: auto;
+        height: 26px;
+        text-transform: uppercase;
+    }
 
 footer {
     font-size: 12px;
@@ -348,25 +373,34 @@ form label {
     padding: 4px;
     text-transform: uppercase;
 }
+form input,
+form textarea {
+    background-color: transparent;
+}
 form textarea,
 form button,
 form input {
     border: 1px solid #A1A29C;
-    font-size: 14px;
+    font-size: 11px;
     padding: 4px;
     width: 210px;
 }
 form button,
 form input.submit {
-    color: #555;
-    border: 1px solid #A1A29C;
-    background-color: #eee;
+    color: #fff;
+    border: none;
+    background-color: #aeafaf;
     width: auto;
     height: 26px;
+    text-transform: uppercase;
 }
 form button {
     float:left;
     margin-right: 5px;
+}
+
+form .mousedown {
+    background-color: #454545 !important;
 }
 form div#recipients,
 form div#buttons {
@@ -379,7 +413,21 @@ form div#buttons {
     /*width: 230px;*/
 }
     form div#recipients button {
-        /*font-size: 10px;*/
+        width: 107px;
+        padding: 0px;
+        font-size: 11px;
+    }
+    form div#buttons button#show_card {
+        width: 105px;
+        margin-right: 10px;
+    }
+    form div#buttons input#send_card {
+        background-color: #666;
+        width: 105px;
+    }
+    form input#send_card_en {
+        background-color: #666;
+        width: 220px;
     }
 .ie7 form div#buttons,
 .ie7 form div#recipients {

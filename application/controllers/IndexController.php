@@ -96,7 +96,6 @@ class IndexController extends Zend_Controller_Action
 
         $this->view->assign(array(
             'hash'      => $model->hash,
-            'signature' => $model->signature,
             'greeting'  => $model->greeting,
         ));
 
@@ -139,7 +138,6 @@ Kode: <strong>' . $model->hash . '</strong></p>
         }
 
         $this->view->assign(array(
-            'signature'  => $model->signature,
             'recipients' => $model->Recipient,
             'hash'       => $model->hash
         ));

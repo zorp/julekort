@@ -7,6 +7,13 @@ var verkcard = {
             $('.flash-text').html(content);
         }
 
+        $('form button,form :submit').bind('mousedown', function() {
+            $(this).addClass('mousedown');
+        });
+        $('form button, form input[type=submit]').bind('mouseup mouseleave', function() {
+            $(this).removeClass('mousedown');
+        });
+
         $('.add-recipient').bind('click', function() {
             verkcard.addRecipient();
         });
@@ -14,12 +21,19 @@ var verkcard = {
             verkcard.removeRecipient();
         });
 
+        verkcard.binds.flash('.new .flash', 198, 320, false);
         $('.view-card').bind('click', function() {
-            verkcard.binds.flash('.new .flash', 440, 320, false);
-        }).trigger('click');
+            verkcard.binds.flash('.new .flash', 198, 320, false);
+            $('.lightbox').fadeIn('fast', function() {
+                verkcard.binds.flash('.new .lightbox .flash', 421, 680, false);
+            });
+        });
+        $('.lightbox .close').bind('click', function() {
+            $('.lightbox').fadeOut('fast');
+        });
 
         $('.reload-card').bind('click', function() {
-            verkcard.binds.flash('.view .flash', 600, 440, true);
+            verkcard.binds.flash('.view .flash', 470, 760, true);
         }).trigger('click');
 
         $('#greeting').autogrow();
