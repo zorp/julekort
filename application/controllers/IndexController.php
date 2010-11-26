@@ -64,12 +64,12 @@ class IndexController extends Zend_Controller_Action
         $gid = $this->_getParam('gid', null);
 
         $to_name = new Zend_Form_Element_Text('to_name_' . $gid, array(
-            'label'      => 'Til:',
+            'label'      => 'Til (navn)',
             'required'   => true,
             'belongsTo'  => 'Recipient[' . $gid . ']',
         ));
         $to_email = new Zend_Form_Element_Text('to_email_' . $gid, array(
-            'label'      => 'Til email:',
+            'label'      => 'Til (email)',
             'required'   => true,
             'belongsTo'  => 'Recipient[' . $gid . ']',
             'validators' => array('EmailAddress'),

@@ -16,12 +16,12 @@ class Default_Form_Greeting extends Zend_Form
         ));
 
         $from_name = new Zend_Form_Element_Text('from_name', array(
-            'label'      => 'Fra:',
+            'label'      => 'Fra (navn)',
             'required'   => true,
             'order'      => 1,
         ));
         $from_email = new Zend_Form_Element_Text('from_email', array(
-            'label'      => 'Fra email:',
+            'label'      => 'Fra (email)',
             'required'   => true,
             'order'      => 2,
             'validators' => array('EmailAddress')
@@ -33,13 +33,13 @@ class Default_Form_Greeting extends Zend_Form
          * a subform might be the way to go by this
          */
         $to_name = new Zend_Form_Element_Text('to_name_0', array(
-            'label'      => 'Til:',
+            'label'      => 'Til (navn)',
             'required'   => true,
             'order'      => 3,
             'belongsTo'  => 'Recipient[0]',
         ));
         $to_email = new Zend_Form_Element_Text('to_email_0', array(
-            'label'      => 'Til email:',
+            'label'      => 'Til (email)',
             'required'   => true,
             'order'      => 4,
             'belongsTo'  => 'Recipient[0]',
