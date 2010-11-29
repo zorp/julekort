@@ -56,6 +56,10 @@ class IndexController extends Zend_Controller_Action
         $model->fromArray($data);
         $model->save();
 
+        if($this->_getParam('send_card_en', false)) {
+            return $this->_redirector->gotoUrl('/send/' . $model->hash . '/?english=true');
+        }
+
         $this->_redirector->gotoUrl('/send/' . $model->hash);
     }
 
@@ -124,15 +128,32 @@ class IndexController extends Zend_Controller_Action
             $mail->setFrom($options['outbound']['email'], $options['outbound']['from']);
             $mail->setSubject('Julekort fra Verk');
 
-            // @todo move this to a view and render it that way
-            $mail->setBodyHtml('<h2>Kære ' . $recipient->to_name . '</h2>
+
+            $message_danish = '<h2>Kære ' . $recipient->to_name . '</h2>
 <p>Du har fået en julehilsen fra Verk.</p>
 <p>For at se kortet, <a href="http://' . $this->getRequest()->getServer('HTTP_HOST') . '/view/' . $model->hash . '">klik her</a>.</p>
 <p>Virker linket ikke, så kopiér koden herunder, <a href="http://' . $this->getRequest()->getServer('HTTP_HOST') . '">klik her</a> og indsæt koden.<br />
 Kode: <strong>' . $model->hash . '</strong></p>
 
 <p>Venlig hilsen<br />
-' . $model->from_name . '</p>');
+' . $model->from_name . '</p>';
+
+            $message_english = '<h2>Dear ' . $recipient->to_name . '</h2>
+<p>You have received a christmas card from Inspicos.</p>
+<p>To see the card use this link, <a href="http://' . $this->getRequest()->getServer('HTTP_HOST') . '/view/' . $model->hash . '">klik her</a>.</p>
+<p>If the link doesnt work, <a href="http://' . $this->getRequest()->getServer('HTTP_HOST') . '">click here</a> and insert the code.<br />
+Code: <strong>' . $model->hash . '</strong></p>
+
+<p>Greetings from,<br />
+' . $model->from_name . '</p>';
+
+
+            // @todo move this to a view and render it that way
+            if($this->_getParam('english', false)) {
+                $mail->setBodyHtml($message_english);
+            } else {
+                $mail->setBodyHtml($message);
+            }
 
             $mail->send($tr);
         }

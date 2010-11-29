@@ -221,10 +221,6 @@ body {
     background-position:top center;
     font-size: 11px;
 }
-body.index form dt {
-    float:none;
-    width: auto;
-}
 
 a {
     color: #555;
@@ -233,11 +229,12 @@ a {
 a:hover {}
 
 h1 {
-    color: #33BEFF;
+    color: #000;
     font-size: 24px;
 }
 h2 {
     font-size: 18px;
+    margin-bottom: 20px;
 }
 h3 {
     font-size: 16px;
@@ -320,6 +317,7 @@ header {
     #container .content {}
 
 .lightbox {
+    padding: 10px;
     text-align:center;
     background-color: #fff;
     position:absolute;
@@ -339,7 +337,6 @@ footer {
     font-size: 12px;
     text-align:right;
 }
-
 
 
 /**
@@ -434,6 +431,21 @@ form div#buttons {
     left: 0px;
 }
 
+body.send a.view,
+body.send a.new {
+    display:block;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    margin: 5px 0px;
+    background-color: #aeafaf;
+    color: #fff;
+    width: 150px;
+    text-align: center;
+}
+body.send a.new {
+    background-color: #666;
+    width: 100px;
+}
 
 /*
  * print styles

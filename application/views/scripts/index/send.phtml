@@ -1,4 +1,4 @@
-<div class="grid_8">
+<div class="grid_2 alpha">
     <h1>Hurra</h1>
     <p>Dit kort er nu sendt til,
         <?php if(count($this->recipients) > 1) : ?>
@@ -13,20 +13,17 @@
             <strong><?php print $this->recipients[0]->to_name ?></strong> på <strong><?php print $this->recipients[0]->to_email; ?></strong>
         <?php endif; ?>
     </p>
+    <p>For at se kortet skal du trykke på din hemmelige kode til højre</p>
+</div>
+<div class="grid_3 suffix_3 omega">
     <h2>Din hemmelige kode er:</h2>
-    <p>
-        <a class="view" href="<?php print $this->url(array(
-            'controller' => 'index',
-            'action' => 'view',
-            'hash' => $this->hash
-        ), 'view'); ?>"><?php print $this->hash; ?></a>
-    </p>
-    <p>For at se kortet kan du trykke på din hemmelige kode her oven over</p>
-    <br>
-    <p>
-        <a class="new" href="<?php print $this->url(array(
-            'controller' => 'index',
-            'action' => 'new',
-        )); ?>">Skriv nyt julekort</a>
-    </p>
+    <a class="view" href="<?php print $this->url(array(
+        'controller' => 'index',
+        'action' => 'view',
+        'hash' => $this->hash
+    ), 'view'); ?>"><?php print $this->hash; ?></a>
+    <a class="new" href="<?php print $this->url(array(
+        'controller' => 'index',
+        'action' => 'new',
+    ), 'default', true); ?>">Nyt kort</a>
 </div>
