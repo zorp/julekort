@@ -7,6 +7,9 @@ Default_Model_Greeting:
       autoincrement: true
     hash:
       type: integer
+    isEnglish:
+      type: boolean
+      default: 0
     from_name:
       type: string(255)
     from_email:

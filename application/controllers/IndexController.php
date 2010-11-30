@@ -45,7 +45,10 @@ class IndexController extends Zend_Controller_Action
             return;
         }
 
+        $isEnglish = ($this->_getParam('send_card_en', false)) ? true : false;
+
         $data = array(
+            'isEnglish'  => $isEnglish,
             'from_name'  => $this->_getParam('from_name'),
             'from_email' => $this->_getParam('from_email'),
             'greeting'   => $this->_getParam('greeting'),
@@ -55,10 +58,6 @@ class IndexController extends Zend_Controller_Action
         $model = new Default_Model_Greeting();
         $model->fromArray($data);
         $model->save();
-
-        if($this->_getParam('send_card_en', false)) {
-            return $this->_redirector->gotoUrl('/send/' . $model->hash . '/?english=true');
-        }
 
         $this->_redirector->gotoUrl('/send/' . $model->hash);
     }
@@ -100,6 +99,7 @@ class IndexController extends Zend_Controller_Action
 
         $this->view->assign(array(
             'hash'      => $model->hash,
+            'isEnglish' => $model->isEnglish,
             'greeting'  => $model->greeting,
         ));
 
@@ -149,10 +149,10 @@ Code: <strong>' . $model->hash . '</strong></p>
 
 
             // @todo move this to a view and render it that way
-            if($this->_getParam('english', false)) {
+            if($model->isEnglish) {
                 $mail->setBodyHtml($message_english);
             } else {
-                $mail->setBodyHtml($message);
+                $mail->setBodyHtml($message_danish);
             }
 
             $mail->send($tr);
