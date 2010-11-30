@@ -1,4 +1,4 @@
-<div class="grid_8">
+<div class="viewer">
     <div class="flash">&nbsp;</div>
     <div class="flash-text" id="flash-text"><?php print nl2br($this->greeting); ?></div>
 
@@ -8,3 +8,13 @@
         <a class="reload-card" href="#">(Vis igen)</a>
     </div>
 </div>
+<?php $this->inlineScript()->captureStart(); ?>
+    jQuery(document).ready(function($) {
+        var isEnglish = <?php print $this->isEnglish; ?>;
+        if(isEnglish) {
+            $('.julehilsen-image').attr({
+                'src' : '/images/julehilsen-english.jpg'
+            });
+        }
+    });
+<?php $this->inlineScript()->captureEnd(); ?>
