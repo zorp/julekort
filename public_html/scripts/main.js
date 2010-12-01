@@ -64,10 +64,10 @@ var verkcard = {
                 swf: '/flash/kort.swf',
                 height: h,
                 width: w,
-                encodeParams: true,
-                flashvars: {
+                encodeParams: false,
+                flashvars: $.param({
                     greeting: greeting
-                }
+                })
             });
         }
     },
