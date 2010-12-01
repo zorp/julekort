@@ -116,10 +116,10 @@ class IndexController extends Zend_Controller_Action
         }
 
         $options = $this->getInvokeArg('bootstrap')->getOption('mail');
-        $tr = new Zend_Mail_Transport_Smtp(
+        /*$tr = new Zend_Mail_Transport_Smtp(
             $options['outbound']['host'],
             $options['outbound']
-        );
+        );*/
 
         foreach($model->Recipient as $recipient) {
             $mail = new Zend_Mail('utf-8');
@@ -156,7 +156,7 @@ Code: <strong>' . $model->hash . '</strong></p>
                 $mail->setBodyHtml($message_danish);
             }
 
-            $mail->send($tr);
+            $mail->send();
         }
 
         $this->view->assign(array(
