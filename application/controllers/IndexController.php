@@ -149,7 +149,7 @@ Code: <strong>' . $model->hash . '</strong></p>
 
             // @todo move this to a view and render it that way
             if($model->isEnglish) {
-                $mail->setSubject('Christmascard from Inspicos');
+                $mail->setSubject('Season\'s Greetings from Inspicos');
                 $mail->setBodyHtml($message_english);
             } else {
                 $mail->setSubject('Julekort fra Inspicos');
