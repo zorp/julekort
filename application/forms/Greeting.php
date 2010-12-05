@@ -77,7 +77,7 @@ class Default_Form_Greeting extends Zend_Form
 
 
         $greeting = new Zend_Form_Element_Textarea('greeting', array(
-            'label'      => 'Tekst:',
+            'label'      => 'Tekst',
             'required'   => true,
             'order'      => 93,
             'validators' => array(

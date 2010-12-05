@@ -222,6 +222,11 @@ body {
     font-size: 11px;
 }
 
+.grid_3_norightmargin {
+    margin-right: 0px;
+    width: 340px !important;
+}
+
 a {
     color: #555;
     text-decoration: none;
@@ -289,6 +294,7 @@ header {
 }
     header .julehilsen {
         padding-top: 13px;
+        /*right: -20px;*/
     }
     header .menu {
         position:absolute;
@@ -297,10 +303,13 @@ header {
         bottom: 0px;
         height: 17px;
     }
+        /*header .menu .text-right {
+            right: -20px;
+        }*/
         header .menu a {
             color: #fff;
             height: 16px;
-            padding: 2px 4px;
+            padding: 2px 2px;
         }
             header .menu a:hover {
                 background-color: #a0a3a9;
@@ -318,14 +327,14 @@ header {
     #container .content {}
 
 .lightbox {
-    padding: 10px;
-    text-align:center;
     background-color: #fff;
     position:absolute;
     height: 461px;
     display:none;
 }
     .lightbox .close {
+        margin-bottom: 5px;
+        margin-left: 10px;
         color: #fff;
         border: none;
         background-color: #aeafaf;
@@ -367,7 +376,7 @@ form dt {
 }
 form dd {
     float:left;
-    width: 220px;
+    width: 250px;
 }
 form label {
     display:block;
@@ -384,7 +393,8 @@ form input {
     border: 1px solid #A1A29C;
     font-size: 11px;
     padding: 4px;
-    width: 210px;
+    width: 240px;
+    overflow: visible;
 }
 form button,
 form input.submit {
@@ -397,43 +407,45 @@ form input.submit {
 }
 form button {
     float:left;
-    margin-right: 5px;
 }
 
 form .mousedown {
     background-color: #454545 !important;
 }
-form div#recipients,
-form div#buttons {
-    margin-top: 10px;
-    margin-bottom: 10px;
+
+
+form #recipients,
+form #buttons {
     clear:both;
-    position:relative;
-    left: 90px;
     overflow:hidden;
-    /*width: 230px;*/
+    margin-bottom: 10px;
+    border: 1px solid red;
 }
-    form div#recipients button {
-        width: 107px;
-        padding: 0px;
-        font-size: 11px;
+    form #buttons button,
+    form #buttons input,
+    form #recipients button {
+        width: 120px;
     }
-    form div#buttons button#show_card {
-        width: 105px;
-        margin-right: 10px;
-    }
-    form div#buttons input#send_card {
-        background-color: #666;
-        width: 105px;
-    }
+        form #buttons button#show_card,
+        form #recipients button#add_recipient {
+            margin-right: 10px;
+        }
+        form #buttons input#send_card {
+            background-color: #666;
+        }
     form input#send_card_en {
+        width: 250px;
         background-color: #666;
-        width: 220px;
     }
-.ie7 form div#buttons,
-.ie7 form div#recipients {
+
+
+.ie7 form #buttons,
+.ie7 form #recipients {
     left: 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
+
 
 body.send a.view,
 body.send a.new {
@@ -450,6 +462,7 @@ body.send a.new {
     background-color: #666;
     width: 100px;
 }
+
 
 /*
  * print styles
