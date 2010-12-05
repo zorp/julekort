@@ -276,7 +276,7 @@ form ul.errors {
     background-image: url('/images/background.jpg');
     background-repeat:no-repeat;
     background-position: 0px 130px;
-    min-height:540px;
+    min-height:550px;
     padding: 20px;
     float:left;
 }
@@ -323,8 +323,17 @@ header {
     position:relative;
     display:inline;
     float:left;
+    min-height: 460px;
 }
     #container .content {}
+
+body.view #container {
+    left: 160px;
+}
+    body.view #container div.grid_8 {
+        width: 760px;
+    }
+
 
 .lightbox {
     background-color: #fff;
@@ -342,9 +351,6 @@ header {
         height: 26px;
         text-transform: uppercase;
     }
-.viewer {
-    text-align: center;
-}
 
 footer {
     font-size: 12px;
@@ -448,6 +454,15 @@ form #buttons {
     margin-bottom: 0px;
 }
 
+body.view input.reload-card {
+    margin-top: 10px;
+    padding: 8px 20px;
+    color: #fff;
+    border: none;
+    background-color: #666;
+    width: auto;
+    text-transform: uppercase;
+}
 
 body.send a.view,
 body.send a.new {
