@@ -413,13 +413,15 @@ form .mousedown {
     background-color: #454545 !important;
 }
 
-
 form #recipients,
 form #buttons {
     clear:both;
+    position:relative;
     overflow:hidden;
+    margin-top: 10px;
     margin-bottom: 10px;
-    border: 1px solid red;
+    left: 90px;
+    width: 250px;
 }
     form #buttons button,
     form #buttons input,
@@ -462,7 +464,6 @@ body.send a.new {
     background-color: #666;
     width: 100px;
 }
-
 
 /*
  * print styles
