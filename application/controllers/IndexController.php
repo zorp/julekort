@@ -139,7 +139,7 @@ Kode: <strong>' . $model->hash . '</strong></p>
 
             $message_english = '<h2>Dear ' . $recipient->to_name . '</h2>
 <p>You have received a christmas card from Inspicos.</p>
-<p>To see the card use this link, <a href="http://' . $this->getRequest()->getServer('HTTP_HOST') . '/view/' . $model->hash . '">klik her</a>.</p>
+<p>To see the card use this link, <a href="http://' . $this->getRequest()->getServer('HTTP_HOST') . '/view/' . $model->hash . '">click here</a>.</p>
 <p>If the link doesnt work, <a href="http://' . $this->getRequest()->getServer('HTTP_HOST') . '">click here</a> and insert the code.<br />
 Code: <strong>' . $model->hash . '</strong></p>
 
