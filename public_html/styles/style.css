@@ -293,8 +293,9 @@ header {
     position:relative;
 }
     header .julehilsen {
-        padding-top: 13px;
-        /*right: -20px;*/
+        padding-top: 10px;
+        font-size: 18px;
+        color: #b0003e !important;
     }
     header .menu {
         position:absolute;
