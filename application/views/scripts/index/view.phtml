@@ -6,13 +6,3 @@
 
     <input type="button" class="button reload-card" value="Show again / Vis igen" name="" />
 </div>
-<?php $this->inlineScript()->captureStart(); ?>
-    jQuery(document).ready(function($) {
-        var isEnglish = <?php print $this->isEnglish; ?>;
-        if(isEnglish) {
-            $('.julehilsen-image').attr({
-                'src' : '/images/julehilsen-english.jpg'
-            });
-        }
-    });
-<?php $this->inlineScript()->captureEnd(); ?>
