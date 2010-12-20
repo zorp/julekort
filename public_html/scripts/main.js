@@ -47,7 +47,7 @@ var verkcard = {
             }
 
             $(selector).flash({
-                swf: '/flash/kort.swf',
+                swf: '/flash/kort-2.swf',
                 height: h,
                 width: w,
                 encodeParams: true,
